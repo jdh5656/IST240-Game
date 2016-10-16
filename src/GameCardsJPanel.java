@@ -9,6 +9,9 @@
  * @author jacobdhayes jdh5656
  */
 
+import Cards.InstructionsCard;
+import Cards.IntroCard;
+import Cards.DesignersCard;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

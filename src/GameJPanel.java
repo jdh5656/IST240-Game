@@ -17,14 +17,14 @@ import javax.swing.*;
 public class GameJPanel extends JPanel implements ActionListener
 {
     
-    NavigationJPanel navigationJPanel;
+    GameNavigationJPanel navigationJPanel;
     GameCardsJPanel gameCards;
     
     public GameJPanel ()
     {
         super ();
         
-        navigationJPanel = new NavigationJPanel();
+        navigationJPanel = new GameNavigationJPanel();
         gameCards = new GameCardsJPanel();
         
         setLayout(new FlowLayout());

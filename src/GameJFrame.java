@@ -18,7 +18,7 @@ public class GameJFrame extends JFrame
 {
 
     GameJPanel gameJPanel;
-    NavigationJPanel navigationJPanel;
+    GameNavigationJPanel navigationJPanel;
     
     public GameJFrame()
     {

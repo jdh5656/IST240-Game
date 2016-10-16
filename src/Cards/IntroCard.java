@@ -1,3 +1,5 @@
+package Cards;
+
 import java.awt.*;
 import javax.swing.*;
 
@@ -5,19 +7,19 @@ import javax.swing.*;
  *
  * @author nickonofrio
  */
-public class InstructionsCard extends JPanel {
+public class IntroCard extends JPanel {
 
-    public InstructionsCard()
+    public IntroCard()
     {
         super();
-    
+        
         GridLayout grid = new GridLayout(6,1);
         setLayout(grid);
-        setBackground(Color.yellow);
+        setBackground(Color.orange);
         
         //Create JLabels
-        JLabel l1 = new JLabel("Instructions");
-        l1.setHorizontalAlignment(JLabel.CENTER);        
+        JLabel l1 = new JLabel("Welcome to our Game");
+        l1.setHorizontalAlignment(JLabel.CENTER);
         
         //Add Components
         add(l1);

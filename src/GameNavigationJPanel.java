@@ -7,12 +7,12 @@ import javax.swing.*;
  *
  * @author nickonofrio
  */
-public class NavigationJPanel extends JPanel
+public class GameNavigationJPanel extends JPanel
 {
     
     JButton jbIntro, jbInstructions, jbDesigners;
     
-    public NavigationJPanel()
+    public GameNavigationJPanel()
     {
         super();
     
