@@ -24,8 +24,8 @@ public class DesignersCard extends JPanel {
         ImageIcon jacob = new ImageIcon("images/JacobHayes.png");
         JLabel l2 = new JLabel("Jacob", jacob, JLabel.CENTER);
         
-        JLabel l3 = new JLabel("Karin");
-        l3.setHorizontalAlignment(JLabel.CENTER);
+        ImageIcon karin = new ImageIcon("images/KarinMartin.jpg");
+        JLabel l3 = new JLabel("Karin", karin, JLabel.CENTER);
         
         ImageIcon nick = new ImageIcon("images/NickOnofrio.jpg");
         JLabel l4 = new JLabel("Nick", nick,JLabel.CENTER);
