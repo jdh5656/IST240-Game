@@ -18,8 +18,8 @@ public class DesignersCard extends JPanel {
         setBackground(Color.blue);
         
         //Create JLabels
-        JLabel l1 = new JLabel("John");
-        l1.setHorizontalAlignment(JLabel.CENTER);
+        ImageIcon john = new ImageIcon("images/JohnCatanzaro.png");
+        JLabel l1 = new JLabel("John", john, JLabel.CENTER);
         
         ImageIcon jacob = new ImageIcon("images/JacobHayes.png");
         JLabel l2 = new JLabel("Jacob", jacob, JLabel.CENTER);
