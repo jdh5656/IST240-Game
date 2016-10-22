@@ -16,7 +16,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     JTextArea aMessage = new JTextArea("Accuracy will be displayed here");
     JSlider accuracy, power;
     JButton b1, b2, b3, b4, b5;
-    JLabel l1;
+    JLabel l1, l2;
     Timer tAccuracy;
     Timer tPower;
     int limit = 0;  
@@ -69,6 +69,9 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         power.setMajorTickSpacing(25);
         power.setBorder(BorderFactory.createTitledBorder("power"));
         
+        //Create Graphics
+        ImageIcon gBackground = new ImageIcon ("images/gameMain.png");
+        l2 = new JLabel(gBackground);
         
         
         //Add Components
@@ -80,6 +83,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         add(power);
         add(pMessage);
         add(aMessage);
+        add(l2);
     
         
         //------------Placing------------------------------------
@@ -92,6 +96,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         b4.setBounds(new Rectangle(600,120,100,100));
         pMessage.setBounds(new Rectangle(600,230,200,20));
         aMessage.setBounds(new Rectangle(100,230,200,20));
+        l2.setBounds(0, 0, 1300, 800);
  
     }
 
