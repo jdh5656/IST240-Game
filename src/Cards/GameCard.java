@@ -12,8 +12,10 @@ import javax.swing.event.ChangeEvent;
  */
 public class GameCard extends JPanel implements ActionListener, javax.swing.event.ChangeListener {
     
+    JTextArea pMessage = new JTextArea("Power will be displayed here");
+    JTextArea aMessage = new JTextArea("Accuracy will be displayed here");
     JSlider accuracy, power;
-    JButton b1, b2, b3, b4;
+    JButton b1, b2, b3, b4, b5;
     JLabel l1;
     Timer tAccuracy;
     Timer tPower;
@@ -56,7 +58,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         b4 = new JButton("Stop Power");
         b4.addActionListener(this);
         b4.setHorizontalAlignment(JButton.CENTER);
-        
+
         
         //Create Sliders
         accuracy = new JSlider(JSlider.HORIZONTAL,0,100,0);
@@ -76,6 +78,8 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         add(b4);
         add(accuracy);
         add(power);
+        add(pMessage);
+        add(aMessage);
     
         
         //------------Placing------------------------------------
@@ -86,7 +90,9 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         b2.setBounds(new Rectangle(100,120,100,100));
         b3.setBounds(new Rectangle(600,10,100,100));
         b4.setBounds(new Rectangle(600,120,100,100));
-        
+        pMessage.setBounds(new Rectangle(600,230,200,20));
+        aMessage.setBounds(new Rectangle(100,230,200,20));
+ 
     }
 
     @Override
@@ -107,11 +113,17 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         
 	    if (obj == b1){tAccuracy.start();}
             
-            if (obj == b2){tAccuracy.stop();}
+            if (obj == b2){
+                tAccuracy.stop();
+                aMessage.setText("Accuracy is: " + p);
+            }
             
             if (obj == b3){tPower.start();}
             
-            if (obj == b4){tPower.stop();}
+            if (obj == b4){
+                tPower.stop();
+                pMessage.setText("Power is: " + a);
+            }
             
             if (obj == tAccuracy)
 		{
