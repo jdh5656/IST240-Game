@@ -12,6 +12,7 @@
 import Cards.InstructionsCard;
 import Cards.IntroCard;
 import Cards.DesignersCard;
+import Cards.GameCard;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,8 +26,9 @@ public class GameCardsJPanel extends JPanel
     IntroCard intro;
     InstructionsCard instructions;
     DesignersCard designers;
+    GameCard game;
     
-    String CINTRO = "Intro", CINSTRUCTIONS = "Instructions", CDESIGNERS = "Designers";
+    String CINTRO = "Intro", CINSTRUCTIONS = "Instructions", CDESIGNERS = "Designers", CGAME = "Game";
     
     public GameCardsJPanel ()
     {
@@ -40,10 +42,12 @@ public class GameCardsJPanel extends JPanel
         intro = new IntroCard();
         instructions = new InstructionsCard();
         designers = new DesignersCard();
+        game = new GameCard();
        
         add(intro, CINTRO);
         add(instructions, CINSTRUCTIONS);
         add(designers, CDESIGNERS);  
+        add(game, CGAME);
         
     }
 

@@ -10,7 +10,7 @@ import javax.swing.*;
 public class GameNavigationJPanel extends JPanel
 {
     
-    JButton jbIntro, jbInstructions, jbDesigners;
+    JButton jbIntro, jbInstructions, jbDesigners, jbGame;
     
     public GameNavigationJPanel()
     {
@@ -23,11 +23,13 @@ public class GameNavigationJPanel extends JPanel
         jbIntro = new JButton("Introduction");
         jbInstructions = new JButton("Instructions");
         jbDesigners = new JButton("Designers");
+        jbGame = new JButton("Game");
         
         //Add Components
         add(jbIntro);
         add(jbInstructions);
         add(jbDesigners);
+        add(jbGame);
         
     }
     
