@@ -32,6 +32,7 @@ public class GameJFrame extends JFrame
        
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize (1300, 800);
+        setResizable(false);
         setVisible(true);    
         
     }
