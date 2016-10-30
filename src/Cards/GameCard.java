@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
+import Cards.OptionsCard;
 
 /**
  *
@@ -35,6 +36,8 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         setLayout(null);
         setBackground(Color.gray);
         
+        OptionsCard gameOptions = new OptionsCard();
+        
         //------TIMER -------------------------------------------
   	aDelay = 10; //milliseconds
         dDelay = 10; //milliseconds
@@ -58,7 +61,20 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         b4 = new JButton("Stop Power");
         b4.addActionListener(this);
         b4.setHorizontalAlignment(JButton.CENTER);
-
+        
+        //------------First three are easy, medium hard affecting speed of slider-------
+        gameOptions.jb1.addActionListener(this);
+        gameOptions.jb2.addActionListener(this);
+        gameOptions.jb3.addActionListener(this);
+        //-----------Second three are weather settings affecting the x, y selections------
+        gameOptions.jb4.addActionListener(this);
+        gameOptions.jb5.addActionListener(this);
+        gameOptions.jb6.addActionListener(this);
+        //----------Third three are distance, i.e. more power needed----------
+        gameOptions.jb7.addActionListener(this);
+        gameOptions.jb8.addActionListener(this);
+        gameOptions.jb9.addActionListener(this);
+        
         
         //Create Sliders
         accuracy = new JSlider(JSlider.HORIZONTAL,0,100,0);
