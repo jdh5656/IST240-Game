@@ -28,6 +28,8 @@ public class IntroCard extends JPanel {
         //Add Components
         add(l1);
         add(b1);
+        
+        // Add leaderboard
     }
 
     

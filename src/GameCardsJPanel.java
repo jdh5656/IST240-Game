@@ -14,6 +14,7 @@ import Cards.IntroCard;
 import Cards.DesignersCard;
 import Cards.GameCard;
 import Cards.OptionsCard;
+import Game.GameController;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -40,12 +41,15 @@ public class GameCardsJPanel extends JPanel
         setLayout(cards);
         setPreferredSize(new Dimension(1300,700));
         
+        //Create Controller
+        GameController controller = new GameController();
+        
         //Create Panels
         intro = new IntroCard();
         instructions = new InstructionsCard();
+        game = new GameCard(controller);
+        options = new OptionsCard(controller);
         designers = new DesignersCard();
-        game = new GameCard();
-        options = new OptionsCard();
        
         add(intro, CINTRO);
         add(instructions, CINSTRUCTIONS);

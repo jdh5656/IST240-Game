@@ -1,5 +1,7 @@
 package Cards;
 
+import Game.GameController;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,7 +13,9 @@ import Cards.OptionsCard;
  *
  * @author nickonofrio
  */
-public class GameCard extends JPanel implements ActionListener, javax.swing.event.ChangeListener {
+public class GameCard extends JPanel implements ActionListener, javax.swing.event.ChangeListener {    
+    
+    GameController controller;
     
     JTextArea pMessage = new JTextArea("Power will be displayed here");
     JTextArea aMessage = new JTextArea("Accuracy will be displayed here");
@@ -27,16 +31,15 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     int j = 0;
     int a = 1, vA = 1;
     int p = 1, vP = 1;
-    
 
-    public GameCard()
+    public GameCard(GameController ctrl)
     {
         super();
         
+        controller = ctrl;
+        
         setLayout(null);
         setBackground(Color.gray);
-        
-        OptionsCard gameOptions = new OptionsCard();
         
         //------TIMER -------------------------------------------
   	aDelay = 10; //milliseconds
@@ -62,19 +65,6 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         b4.addActionListener(this);
         b4.setHorizontalAlignment(JButton.CENTER);
         
-        //------------First three are easy, medium hard affecting speed of slider-------
-        gameOptions.jb1.addActionListener(this);
-        gameOptions.jb2.addActionListener(this);
-        gameOptions.jb3.addActionListener(this);
-        //-----------Second three are weather settings affecting the x, y selections------
-        gameOptions.jb4.addActionListener(this);
-        gameOptions.jb5.addActionListener(this);
-        gameOptions.jb6.addActionListener(this);
-        //----------Third three are distance, i.e. more power needed----------
-        gameOptions.jb7.addActionListener(this);
-        gameOptions.jb8.addActionListener(this);
-        gameOptions.jb9.addActionListener(this);
-        
         
         //Create Sliders
         accuracy = new JSlider(JSlider.HORIZONTAL,0,100,0);
@@ -88,6 +78,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         //Create Graphics
         ImageIcon gBackground = new ImageIcon ("images/gameMain.png");
         l2 = new JLabel(gBackground);
+       
         
         
         //Add Components
@@ -99,6 +90,9 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         add(power);
         add(pMessage);
         add(aMessage);
+        add(controller.optionsDifficulty);
+        add(controller.optionsWind);
+        add(controller.optionsDistance);
         add(l2);
     
         
@@ -113,6 +107,9 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         pMessage.setBounds(new Rectangle(600,230,200,20));
         aMessage.setBounds(new Rectangle(100,230,200,20));
         l2.setBounds(0, 0, 1300, 800);
+        controller.optionsDifficulty.setBounds(new Rectangle(0,580,200,20));
+        controller.optionsWind.setBounds(new Rectangle(0,620,200,20));
+        controller.optionsDistance.setBounds(new Rectangle(0,660,200,20));
  
     }
 
@@ -162,7 +159,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         
     
     
-}
+    }
 
     @Override
     public void stateChanged(ChangeEvent e) {

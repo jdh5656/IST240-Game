@@ -29,9 +29,9 @@ public class GameNavigationJPanel extends JPanel
         //Add Components
         add(jbIntro);
         add(jbInstructions);
-        add(jbDesigners);
-        add(jbGame);
         add(jbOptions);
+        add(jbGame);
+        add(jbDesigners);
     }
     
 }
