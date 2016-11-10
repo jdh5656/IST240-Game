@@ -24,13 +24,20 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     JLabel l1, l2;
     Timer tAccuracy;
     Timer tPower;
+    Timer pDirection;
+    Timer tWind;
     int limit = 0;  
     int aDelay = 0;
     int dDelay = 0;
+    int wDelay = 0;
     int i = 0;
     int j = 0;
     int a = 1, vA = 1;
     int p = 1, vP = 1;
+    double wRandom = Math.random() * 4;
+    int wx = 0;
+    int wy = 0;
+
 
     public GameCard(GameController ctrl)
     {
@@ -41,12 +48,15 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         setLayout(null);
         setBackground(Color.gray);
         
-        //------TIMER -------------------------------------------
+        //------SLIDER TIMER -------------------------------------------
   	aDelay = 10; //milliseconds
         dDelay = 10; //milliseconds
         tAccuracy = new Timer(aDelay, this);
         tPower = new Timer(dDelay, this);
-     
+        
+        //-------WIND TIMER---------------------------------------------
+        wDelay = 10*(1000);
+        tWind = new Timer(wDelay, this);
         
         //Create JButtons
         b1 = new JButton("Start Accuracy");
@@ -153,6 +163,31 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
             {
                 j = j+1;
                 power.setValue(p);
+            }
+            //------Random wind direction for send into controller----------
+            if (obj == tWind)
+            {
+                wRandom = Math.random()*4;
+                if (wRandom <= 1) //East
+                {
+                    wx = 1;
+                    wy = 0;        
+                }
+                else if (wRandom <= 2) //South
+                {
+                    wx = 0;
+                    wy = -1;
+                }
+                else if (wRandom <= 3) //West
+                {
+                    wx = -1;
+                    wy = 0;
+                }
+                else //North
+                {
+                    wx = 0;
+                    wy = 1;
+                }         
             }
             
             repaint();

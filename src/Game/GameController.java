@@ -31,25 +31,41 @@ public class GameController {
         
     }
     
-    int[] evaluateKick(){
-        
+    int[] evaluateKick(int p, int a, int xDir, int yDir){
+        int x = 0;
+        int y = 0;
+        int coordinates[] = {x,y};        
         //if power
             //if options distance
+        if (p > 0 && p < 100) 
+        {
+            if (options.difficulty == "Practice")
+            {
+                
+            }
+            if (options.difficulty == "Game Day")
+            {
+                
+            }
+            if (options.difficulty == "Championship")
+            {
+                
+            }            
+        }
             
         //if accuracy
            // if wind
         
-        int x = 0;
-        int y = 0;
-        int coordinates[] = {x,y};
+
         
         return coordinates;
         
     }
     
-    int evaluteGoal() {
+    int evaluateGoal() {
         
         //if distance = 1, 2, 3 boundingbox = ?
+        
         
         
         int goal = 0;
