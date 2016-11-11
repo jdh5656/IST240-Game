@@ -20,7 +20,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     JTextArea pMessage = new JTextArea("Power will be displayed here");
     JTextArea aMessage = new JTextArea("Accuracy will be displayed here");
     JSlider accuracy, power;
-    JButton b1, b2, b3, b4, b5;
+    JButton b1, b2, b3, b4, b5, b6;
     JLabel l1, l2;
     Timer tAccuracy;
     Timer tPower;
@@ -75,6 +75,10 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         b4.addActionListener(this);
         b4.setHorizontalAlignment(JButton.CENTER);
         
+        b6 = new JButton("Test Selection");
+        b6.addActionListener(this);
+        b6.setHorizontalAlignment(JButton.CENTER);
+        
         
         //Create Sliders
         accuracy = new JSlider(JSlider.HORIZONTAL,0,100,0);
@@ -96,6 +100,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         add(b2);
         add(b3);
         add(b4);
+        add(b6);
         add(accuracy);
         add(power);
         add(pMessage);
@@ -114,6 +119,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         b2.setBounds(new Rectangle(100,120,100,100));
         b3.setBounds(new Rectangle(600,10,100,100));
         b4.setBounds(new Rectangle(600,120,100,100));
+        b6.setBounds(1000, 600, 200, 100);
         pMessage.setBounds(new Rectangle(600,230,200,20));
         aMessage.setBounds(new Rectangle(100,230,200,20));
         l2.setBounds(0, 0, 1300, 800);
@@ -163,6 +169,10 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
             {
                 j = j+1;
                 power.setValue(p);
+            }
+            if (obj == b6)
+            {
+                controller.evaluateKick(p, a, wx, wy);
             }
             //------Random wind direction for send into controller----------
             if (obj == tWind)

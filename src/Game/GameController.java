@@ -31,7 +31,7 @@ public class GameController {
         
     }
     
-    int[] evaluateKick(int p, int a, int xDir, int yDir){
+    public int[] evaluateKick(int p, int a, int xDir, int yDir){
         int x = 0;
         int y = 0;
         int coordinates[] = {x,y};        
