@@ -25,7 +25,6 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     JLabel l1, l2;
     Timer tAccuracy;
     Timer tPower;
-    Timer pDirection;
     Timer tWind;
     int limit = 0;  
     int aDelay = 0;
@@ -86,10 +85,12 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         accuracy = new JSlider(JSlider.HORIZONTAL,0,100,0);
         accuracy.setMajorTickSpacing(25);
         accuracy.setBorder(BorderFactory.createTitledBorder("Accuracy"));
+        accuracy.setPaintTicks(true);
         
         power = new JSlider(JSlider.VERTICAL,0,100,0);
         power.setMajorTickSpacing(25);
         power.setBorder(BorderFactory.createTitledBorder("power"));
+        power.setPaintTicks(true);
         
         //Create Graphics
         ImageIcon gBackground = new ImageIcon ("images/gameMain.png");
@@ -134,46 +135,45 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     @Override
     public void actionPerformed(ActionEvent e) {
         Object obj = e.getSource();
-        String choice = e.getActionCommand();
-        
-            if (a < 0 || a > 100){
-                    vA = -vA;
-                }
-            
-            if (p < 0 || p > 100){
-                    vP = -vP;
-                }
-            a += vA;
-            p += vP;
-        
-        
+        String choice = e.getActionCommand();        
 	    if (obj == b1){tAccuracy.start();}
             
             if (obj == b2){
                 tAccuracy.stop();
-                aMessage.setText("Accuracy is: " + p);
+                aMessage.setText("Accuracy is: " + a);
             }
             
             if (obj == b3){tPower.start();}
             
             if (obj == b4){
                 tPower.stop();
-                pMessage.setText("Power is: " + a);
+                pMessage.setText("Power is: " + p);
             }
             
             if (obj == tAccuracy)
 		{
 		i = i+1;
+                if (a < 0 || a > 100)
+                {
+                    vA = -vA;
+                }
+                a += vA;
                 accuracy.setValue(a);
                 }
             
             if (obj == tPower)
             {
                 j = j+1;
+                if (p < 0 || p > 100)
+                {
+                    vP = -vP;
+                }
+                p += vP;
                 power.setValue(p);
             }
             if (obj == b6)
             {
+                System.out.println("Power and Accuracy after pressing submit test kick b6"+p+" "+a);
                 kickPoint = controller.evaluateKick(p, a, wx, wy);
                 winLose = controller.evaluateGoal(kickPoint);
                 if(winLose == 0)
