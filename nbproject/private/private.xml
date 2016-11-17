@@ -5,9 +5,11 @@
         <group>
             <file>file:/C:/Users/John/Documents/NetBeansProjects/gameredux/IST240-Game/src/Game/GameController.java</file>
             <file>file:/C:/Users/John/Documents/NetBeansProjects/gameredux/IST240-Game/src/Game/GameOptions.java</file>
+            <file>file:/C:/Users/John/Documents/NetBeansProjects/gameredux/IST240-Game/src/Cards/DesignersCard.java</file>
             <file>file:/C:/Users/John/Documents/NetBeansProjects/gameredux/IST240-Game/src/Cards/OptionsCard.java</file>
-            <file>file:/C:/Users/John/Documents/NetBeansProjects/gameredux/IST240-Game/src/Game/GameLeaderboard.java</file>
+            <file>file:/C:/Users/John/Documents/NetBeansProjects/gameredux/IST240-Game/src/Cards/InstructionsCard.java</file>
             <file>file:/C:/Users/John/Documents/NetBeansProjects/gameredux/IST240-Game/src/Cards/GameCard.java</file>
+            <file>file:/C:/Users/John/Documents/NetBeansProjects/gameredux/IST240-Game/src/GameNavigationJPanel.java</file>
         </group>
     </open-files>
 </project-private>

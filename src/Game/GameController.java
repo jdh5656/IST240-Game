@@ -17,6 +17,8 @@ public class GameController {
     public JTextArea optionsDifficulty;
     public JTextArea optionsWind;
     public JTextArea optionsDistance;
+    int kickBoxX = 530;//width in pixels
+    int kickBoxY = 300; //width in pixels
     
     
     
@@ -31,33 +33,45 @@ public class GameController {
         
     }
     
-    public int[] evaluateKick(int p, int a, int xDir, int yDir){
+    public int[] evaluateKick(int pow, int acc, int xDir, int yDir){
         int x = 0;
         int y = 0;
-        int coordinates[] = {x,y};        
+        double randomNum = Math.random();
+        int baseWind = 10;
+        
         //if power
-            //if options distance
-        if (p > 0 && p < 100) 
+        // Calculates x and y values BEFORE wind factor
+        if (pow >= 0 && pow <= 100) 
         {
-            if (options.difficulty == "Practice")
-            {
-                
-            }
-            if (options.difficulty == "Game Day")
-            {
-                
-            }
-            if (options.difficulty == "Championship")
-            {
-                
-            }            
+            y = ((pow/100)*kickBoxY);
         }
+        if (acc >= 0 && acc <=100)
+        {
+            x = (acc/100)*kickBoxX;
+        }
+        
             
-        //if accuracy
+        //Adjusts x based on wind direction and degree of adjustment
+        if (options.wind == "Slight")
+        {
+            x = x + (int) (randomNum * xDir * baseWind);
+            y = y + (int) (randomNum * xDir * baseWind);
+        }
            // if wind
+        if (options.wind == "Moderate")
+        {
+            x = x + (int) ((randomNum * xDir * baseWind) + baseWind);   
+            y = y + (int) ((randomNum * xDir * baseWind) + baseWind); 
+        }
+        if (options.wind == "Heavy")
+        {
+            x = x + (int) ((randomNum * xDir * 10) + (baseWind+5));
+            y = y + (int) ((randomNum * xDir * 10) + (baseWind+5));
+            
+        }
         
-
-        
+        //sets coordinates
+        int coordinates[] = {x,y};
         return coordinates;
         
     }
