@@ -13,6 +13,7 @@ public class OptionsCard extends JPanel implements ActionListener
 {
     JButton jb1,jb2,jb3,jb4,jb5,jb6,jb7,jb8,jb9;
     GameController controller;
+
     
     public OptionsCard(GameController ctrl)
     {
@@ -114,14 +115,26 @@ public class OptionsCard extends JPanel implements ActionListener
         
         if(obj == jb7){
             controller.options.distance = "Close";
+            controller.winXMax = 415;
+            controller.winYMax = 250;
+            controller.winXMin = 115;
+            controller.winYMin = 50;
         }
         
         if(obj == jb8){
             controller.options.distance = "Average";
+//            controller.winXMax = 350;
+//            controller.winYMax = 225;
+//            controller.winXMin = 0;
+//            controller.winYMin = 0;
         }
         
         if(obj == jb9){
-            controller.options.distance = "NFL Record";
+//            controller.options.distance = "NFL Record";
+//            controller.winXMax = 300;
+//            controller.winYMax = 200;
+//            controller.winXMin = 0;
+//            controller.winYMin = 0;
         }
         
         controller.optionsDifficulty.setText("Game Type: "+controller.options.difficulty);

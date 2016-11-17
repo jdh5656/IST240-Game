@@ -17,8 +17,12 @@ public class GameController {
     public JTextArea optionsDifficulty;
     public JTextArea optionsWind;
     public JTextArea optionsDistance;
-    int kickBoxX = 530;//width in pixels
-    int kickBoxY = 300; //width in pixels
+    public int kickX = 530;
+    public int kickY = 300; 
+    public int winXMax = 415; 
+    public int winXMin = 115; 
+    public int winYMax = 250;
+    public int winYMin = 50;
     
     
     
@@ -34,21 +38,21 @@ public class GameController {
     }
     
     public int[] evaluateKick(int pow, int acc, int xDir, int yDir){
-        int x = 0;
-        int y = 0;
+        double x = 0;
+        double y = 0;
         double randomNum = Math.random();
         int baseWind = 10;
-        
         //if power
         // Calculates x and y values BEFORE wind factor
         if (pow >= 0 && pow <= 100) 
         {
-            y = ((pow/100)*kickBoxY);
+            y = ((pow/100)*kickY);
         }
         if (acc >= 0 && acc <=100)
         {
-            x = (acc/100)*kickBoxX;
+            x = (acc/100)*kickX;
         }
+        System.out.println(pow+" "+acc);
         
             
         //Adjusts x based on wind direction and degree of adjustment
@@ -71,18 +75,46 @@ public class GameController {
         }
         
         //sets coordinates
-        int coordinates[] = {x,y};
+        int coordinates[] = {(int)x,(int)y};
         return coordinates;
         
     }
     
-    int evaluateGoal() {
-        
+    public int evaluateGoal(int coordinates[]) {
+        int goal = 0; //1 for win 0 for lose
         //if distance = 1, 2, 3 boundingbox = ?
-        
-        
-        
-        int goal = 0;
+        if (options.distance == "Close")
+        {
+            if (coordinates[0] >= winXMin && coordinates[0] <= winXMax && coordinates[1] >= winYMin && coordinates[1] <= winYMin)
+            {
+                goal = 1;
+            }
+            else {
+                goal = 0;
+            }
+            
+        }
+        if (options.distance == "Average")
+        {
+            if (coordinates[0] >= winXMin && coordinates[0] <= winXMax && coordinates[1] >= winYMin && coordinates[1] <= winYMin)
+            {
+                goal = 1;
+            }
+            else {
+                goal = 0;
+            }
+            
+        }
+        if (options.distance == "NFL Record")
+        {
+            if (coordinates[0] >= winXMin && coordinates[0] <= winXMax && coordinates[1] >= winYMin && coordinates[1] <= winYMin)
+            {
+                goal = 1;
+            }
+            else {
+                goal = 0;
+            }            
+        }
         
         //if [x,y] is within bounding box goal = 1 else goal = 0
 

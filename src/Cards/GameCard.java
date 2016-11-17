@@ -5,6 +5,7 @@ import Game.GameController;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import Cards.OptionsCard;
@@ -37,7 +38,8 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     double wRandom = Math.random() * 4;
     int wx = 0;
     int wy = 0;
-
+    int kickPoint[];
+    int winLose;
 
     public GameCard(GameController ctrl)
     {
@@ -172,7 +174,13 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
             }
             if (obj == b6)
             {
-                controller.evaluateKick(p, a, wx, wy);
+                kickPoint = controller.evaluateKick(p, a, wx, wy);
+                winLose = controller.evaluateGoal(kickPoint);
+                if(winLose == 0)
+                System.out.println(kickPoint[0]+","+kickPoint[1]+" "+winLose);
+                {
+                    
+                }
             }
             //------Random wind direction for send into controller----------
             if (obj == tWind)
