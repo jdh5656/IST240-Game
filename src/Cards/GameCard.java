@@ -23,7 +23,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     JTextArea wMessage = new JTextArea("Wind direction will be displayed here");
     JTextArea rMessage = new JTextArea("Outcome of kick will be shown here");
     JSlider accuracy, power;
-    JButton b1, b2, b3, b4, b5, b6;
+    JButton b1, b2, b5, b6;
     JLabel l1, l2;
     Timer tAccuracy;
     Timer tPower;
@@ -41,6 +41,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     double wy = 1;
     int kickPoint[];
     int winLose;
+    int keyCounter = 0;
 
     public GameCard(GameController ctrl)
     {
@@ -60,23 +61,16 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         //-------WIND TIMER---------------------------------------------
         wDelay = 10*1000;
         tWind = new Timer(wDelay, this);
+        tWind.start();
         
         //Create JButtons
-        b1 = new JButton("Start Accuracy");
+        b1 = new JButton("Start Game");
         b1.addActionListener(this);
         b1.setHorizontalAlignment(JButton.CENTER);
         
-        b2 = new JButton("Stop Accuracy");
+        b2 = new JButton("Stop Slider");
         b2.addActionListener(this);
         b2.setHorizontalAlignment(JButton.CENTER);
-        
-        b3 = new JButton("Start Power");
-        b3.addActionListener(this);
-        b3.setHorizontalAlignment(JButton.CENTER);
-        
-        b4 = new JButton("Stop Power");
-        b4.addActionListener(this);
-        b4.setHorizontalAlignment(JButton.CENTER);
         
         b6 = new JButton("Test Selection");
         b6.addActionListener(this);
@@ -103,8 +97,6 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         //Add Components
         add(b1);
         add(b2);
-        add(b3);
-        add(b4);
         add(b6);
         add(accuracy);
         add(power);
@@ -124,17 +116,15 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         power.setBounds(new Rectangle(800,400,100,300));
         b1.setBounds(new Rectangle(100,10,100,100));
         b2.setBounds(new Rectangle(100,120,100,100));
-        b3.setBounds(new Rectangle(600,10,100,100));
-        b4.setBounds(new Rectangle(600,120,100,100));
         b6.setBounds(1000, 600, 200, 100);
-        pMessage.setBounds(new Rectangle(600,230,200,20));
+        pMessage.setBounds(new Rectangle(100,260,200,20));
         aMessage.setBounds(new Rectangle(100,230,200,20));
         wMessage.setBounds(new Rectangle(1000,230,200,20));
         rMessage.setBounds(new Rectangle(1000,500,200,20));
         l2.setBounds(0, 0, 1300, 800);
-        controller.optionsDifficulty.setBounds(new Rectangle(0,580,200,20));
-        controller.optionsWind.setBounds(new Rectangle(0,620,200,20));
-        controller.optionsDistance.setBounds(new Rectangle(0,660,200,20));
+        controller.optionsDifficulty.setBounds(new Rectangle(10,580,200,20));
+        controller.optionsWind.setBounds(new Rectangle(10,620,200,20));
+        controller.optionsDistance.setBounds(new Rectangle(10,660,200,20));
  
     }
 
@@ -144,21 +134,42 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         String choice = e.getActionCommand();        
 	    if (obj == b1){
                 tAccuracy.start();
-                tWind.start();
             }
             
             if (obj == b2){
-                tAccuracy.stop();
-                aMessage.setText("Accuracy is: " + a);
+                if (keyCounter == 0)
+                {
+                    tAccuracy.stop();
+                    aMessage.setText("Accuracy is: " + a);
+                    keyCounter++;
+                    tPower.start();
+                }
+                else {
+                    
+                    tPower.stop();
+                    pMessage.setText("Power is: " + p);
+                    
+                    //----------CALCULATES IF WIN ------------
+                    kickPoint = controller.evaluateKick(p, a, wx, wy);
+                    winLose = controller.evaluateGoal(kickPoint);
+                    if (winLose == 1)
+                    {
+                        rMessage.setText("You Win!!");
+                    }
+                    else {
+                        rMessage.setText("You Lose :(");
+                    }
+                    System.out.println(kickPoint[0]+","+kickPoint[1]+" "+winLose);
+                    
+                    //----------RESETS THE GAME----------------
+                    keyCounter = 0;
+                    tAccuracy.start();
+                    p = 0;
+                    a = 0;
+                    accuracy.setValue(0);
+                    power.setValue(0);
+                    }                
             }
-            
-            if (obj == b3){tPower.start();}
-            
-            if (obj == b4){
-                tPower.stop();
-                pMessage.setText("Power is: " + p);
-            }
-            
             if (obj == tAccuracy)
 		{
 		i = i+1;
@@ -182,19 +193,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
             }
             if (obj == b6)
             {
-                kickPoint = controller.evaluateKick(p, a, wx, wy);
-                winLose = controller.evaluateGoal(kickPoint);
-                if (winLose == 1)
-                {
-                    rMessage.setText("You Win!!");
-                }
-                else {
-                    rMessage.setText("You Lose :(");
-                }
-                System.out.println(kickPoint[0]+","+kickPoint[1]+" "+winLose);
-                {
-                    
-                }
+
             }
             //------Random wind direction for send into controller----------
             if (obj == tWind)
