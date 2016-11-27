@@ -21,6 +21,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     JTextArea pMessage = new JTextArea("Power will be displayed here");
     JTextArea aMessage = new JTextArea("Accuracy will be displayed here");
     JTextArea wMessage = new JTextArea("Wind direction will be displayed here");
+    JTextArea rMessage = new JTextArea("Outcome of kick will be shown here");
     JSlider accuracy, power;
     JButton b1, b2, b3, b4, b5, b6;
     JLabel l1, l2;
@@ -110,6 +111,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         add(pMessage);
         add(aMessage);
         add(wMessage);
+        add(rMessage);
         add(controller.optionsDifficulty);
         add(controller.optionsWind);
         add(controller.optionsDistance);
@@ -128,6 +130,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         pMessage.setBounds(new Rectangle(600,230,200,20));
         aMessage.setBounds(new Rectangle(100,230,200,20));
         wMessage.setBounds(new Rectangle(1000,230,200,20));
+        rMessage.setBounds(new Rectangle(1000,500,200,20));
         l2.setBounds(0, 0, 1300, 800);
         controller.optionsDifficulty.setBounds(new Rectangle(0,580,200,20));
         controller.optionsWind.setBounds(new Rectangle(0,620,200,20));
@@ -181,7 +184,13 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
             {
                 kickPoint = controller.evaluateKick(p, a, wx, wy);
                 winLose = controller.evaluateGoal(kickPoint);
-                if(winLose == 0)
+                if (winLose == 1)
+                {
+                    rMessage.setText("You Win!!");
+                }
+                else {
+                    rMessage.setText("You Lose :(");
+                }
                 System.out.println(kickPoint[0]+","+kickPoint[1]+" "+winLose);
                 {
                     

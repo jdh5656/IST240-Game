@@ -41,9 +41,7 @@ public class GameController {
         double x = 0;
         double y = 0;
         double randomNum = Math.random();
-        System.out.println(randomNum);
         double baseWind = 10;
-        System.out.println("x and y before sending through 'if' option evaluate kick: "+ x+ " "+ y);
         //if power
         // Calculates x and y values BEFORE wind factor
         if (pow >= 0 && pow <= 100) 
@@ -54,17 +52,14 @@ public class GameController {
         {
             x = (double)(acc/100)*kickX;
         }
-        System.out.println("x and y before sending through 'if' option evaluate kick: "+ x+ " "+ y);
         
         
             
         //Adjusts x based on wind direction and degree of adjustment
         if (options.wind == "Slight")
         {
-            System.out.println(xDir + " " + yDir + " "+ baseWind);
             x = x + (randomNum * xDir * baseWind);
             y = y + (randomNum * yDir * baseWind);
-            System.out.println("x and y after evaluateKick calculation for 'Slight' wind "+x+" "+y);
         }
            // if wind
         if (options.wind == "Moderate")
@@ -88,16 +83,17 @@ public class GameController {
     public int evaluateGoal(int coordinates[]) {
         int goal = 0; //1 for win 0 for lose
         //if distance = 1, 2, 3 boundingbox = ?
+        System.out.println(coordinates[0] + ", " +coordinates[1]);
         if (options.distance == "Close")
         {
-            if (coordinates[0] >= winXMin && coordinates[0] <= winXMax && coordinates[1] >= winYMin && coordinates[1] <= winYMin)
-            {
+            if (coordinates[0] >= winXMin && coordinates[0] <= winXMax && coordinates[1] >= winYMin && coordinates[1] <= winYMax) 
+            {            
+                System.out.println("test");
                 goal = 1;
             }
             else {
                 goal = 0;
-            }
-            
+            }     
         }
         if (options.distance == "Average")
         {
