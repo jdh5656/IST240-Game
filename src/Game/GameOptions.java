@@ -11,9 +11,9 @@ import javax.swing.event.ChangeEvent;
  */
 public class GameOptions {
 
-    public String difficulty;
-    public String wind;
-    public String distance;
+    public String difficulty = "Practice";
+    public String wind = "Slight";
+    public String distance = "Close";
     
     public GameOptions()
     {

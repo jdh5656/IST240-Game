@@ -37,41 +37,45 @@ public class GameController {
         
     }
     
-    public int[] evaluateKick(int pow, int acc, int xDir, int yDir){
+    public int[] evaluateKick(double pow, double acc, double xDir, double yDir){
         double x = 0;
         double y = 0;
         double randomNum = Math.random();
-        int baseWind = 10;
-        System.out.println(pow+" "+acc);
+        System.out.println(randomNum);
+        double baseWind = 10;
+        System.out.println("x and y before sending through 'if' option evaluate kick: "+ x+ " "+ y);
         //if power
         // Calculates x and y values BEFORE wind factor
         if (pow >= 0 && pow <= 100) 
         {
-            y = ((pow/100)*kickY);
+            y = (pow/100)*kickY;
         }
         if (acc >= 0 && acc <=100)
         {
-            x = (acc/100)*kickX;
+            x = (double)(acc/100)*kickX;
         }
+        System.out.println("x and y before sending through 'if' option evaluate kick: "+ x+ " "+ y);
         
         
             
         //Adjusts x based on wind direction and degree of adjustment
         if (options.wind == "Slight")
         {
-            x = x + (int) (randomNum * xDir * baseWind);
-            y = y + (int) (randomNum * xDir * baseWind);
+            System.out.println(xDir + " " + yDir + " "+ baseWind);
+            x = x + (randomNum * xDir * baseWind);
+            y = y + (randomNum * yDir * baseWind);
+            System.out.println("x and y after evaluateKick calculation for 'Slight' wind "+x+" "+y);
         }
            // if wind
         if (options.wind == "Moderate")
         {
             x = x + (int) ((randomNum * xDir * baseWind) + baseWind);   
-            y = y + (int) ((randomNum * xDir * baseWind) + baseWind); 
+            y = y + (int) ((randomNum * yDir * baseWind) + baseWind); 
         }
         if (options.wind == "Heavy")
         {
             x = x + (int) ((randomNum * xDir * 10) + (baseWind+5));
-            y = y + (int) ((randomNum * xDir * 10) + (baseWind+5));
+            y = y + (int) ((randomNum * yDir * 10) + (baseWind+5));
             
         }
         
