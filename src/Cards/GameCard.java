@@ -191,14 +191,10 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                 p += vP;
                 power.setValue(p);
             }
-            if (obj == b6)
-            {
-
-            }
             //------Random wind direction for send into controller----------
             if (obj == tWind)
             {
-                wRandom = Math.random()*4;
+                wRandom = Math.random()*8;
                 if (wRandom <= 1) //East
                 {
                     wx = 1;
@@ -216,13 +212,37 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                     wx = -1;
                     wy = 0;
                     wMessage.setText("West");
-                }
-                else //North
+                }             
+                else if (wRandom <= 4)//North
                 {
                     wx = 0;
                     wy = 1;
                     wMessage.setText("North");
-                }         
+                }
+                else if (wRandom <= 5) //North West
+                {
+                    wx = -1;
+                    wy = 1;
+                    wMessage.setText("North West");
+                }
+                else if (wRandom <= 6) //South West
+                {
+                    wx = -1;
+                    wy = -1;
+                    wMessage.setText("South West");
+                }
+                else if (wRandom <= 7) //North East
+                {
+                    wx = 1;
+                    wy = 1;
+                    wMessage.setText("North East");
+                }
+                else if (wRandom <= 8) //North West
+                {
+                    wx = 1;
+                    wy = -1;
+                    wMessage.setText("North West");
+                }                   
             }
             
             repaint();
