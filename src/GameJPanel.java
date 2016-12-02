@@ -24,6 +24,15 @@ public class GameJPanel extends JPanel implements ActionListener
     {
         super ();
         
+        // Adding MAC Support
+                try 
+                {
+                    UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName() );
+                } catch (Exception e) 
+                {
+                    e.printStackTrace();
+                } 
+        
         navigationJPanel = new GameNavigationJPanel();
         gameCards = new GameCardsJPanel();
         

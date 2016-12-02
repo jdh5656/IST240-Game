@@ -34,14 +34,23 @@ public class OptionsCard extends JPanel implements ActionListener
         
         //--------Create JButtons--------------
         jb1 = new JButton ("Practice");
+        jb1.setBackground(Color.BLUE);
         jb2 = new JButton ("Game Day");
+        jb2.setBackground(Color.GRAY);
         jb3 = new JButton ("Championship");
+        jb3.setBackground(Color.GRAY);
         jb4 = new JButton ("Slight");
+        jb4.setBackground(Color.BLUE);
         jb5 = new JButton ("Moderate");
+        jb5.setBackground(Color.GRAY);
         jb6 = new JButton ("Heavy");
+        jb6.setBackground(Color.GRAY);
         jb7 = new JButton ("Close");
+        jb7.setBackground(Color.BLUE);
         jb8 = new JButton ("Average");
+        jb8.setBackground(Color.GRAY);
         jb9 = new JButton ("NFL Record");
+        jb9.setBackground(Color.GRAY);
         
         //---------------Add Labels and JButtons----------
         add(label1);
@@ -87,34 +96,55 @@ public class OptionsCard extends JPanel implements ActionListener
         
         if(obj == jb1){
             controller.options.difficulty = "Practice";
+            jb1.setBackground(Color.BLUE);
+            jb2.setBackground(Color.GRAY);
+            jb3.setBackground(Color.GRAY);
         }
         
         if(obj == jb2){
             controller.options.difficulty = "Game Day";
+            jb1.setBackground(Color.GRAY);
+            jb2.setBackground(Color.BLUE);
+            jb3.setBackground(Color.GRAY);
         }
         
         if(obj == jb3){
             controller.options.difficulty = "Championship";
+            jb1.setBackground(Color.GRAY);
+            jb2.setBackground(Color.GRAY);
+            jb3.setBackground(Color.BLUE);
         }
         
         //--------Wind--------------
         
         if(obj == jb4){
             controller.options.wind = "Slight";
+            jb4.setBackground(Color.BLUE);
+            jb5.setBackground(Color.GRAY);
+            jb6.setBackground(Color.GRAY);
         }
         
         if(obj == jb5){
             controller.options.wind = "Moderate";
+            jb4.setBackground(Color.GRAY);
+            jb5.setBackground(Color.BLUE);
+            jb6.setBackground(Color.GRAY);
         }
         
         if(obj == jb6){
             controller.options.wind = "Heavy";
+            jb4.setBackground(Color.GRAY);
+            jb5.setBackground(Color.GRAY);
+            jb6.setBackground(Color.BLUE);
         }
         
         //--------Distance--------------
         
         if(obj == jb7){
             controller.options.distance = "Close";
+            jb7.setBackground(Color.BLUE);
+            jb8.setBackground(Color.GRAY);
+            jb9.setBackground(Color.GRAY);
             controller.winXMax = 415;
             controller.winYMax = 250;
             controller.winXMin = 115;
@@ -123,6 +153,9 @@ public class OptionsCard extends JPanel implements ActionListener
         
         if(obj == jb8){
             controller.options.distance = "Average";
+            jb7.setBackground(Color.GRAY);
+            jb8.setBackground(Color.BLUE);
+            jb9.setBackground(Color.GRAY);
 //            controller.winXMax = 350;
 //            controller.winYMax = 225;
 //            controller.winXMin = 0;
@@ -130,6 +163,9 @@ public class OptionsCard extends JPanel implements ActionListener
         }
         
         if(obj == jb9){
+            jb7.setBackground(Color.GRAY);
+            jb8.setBackground(Color.GRAY);
+            jb9.setBackground(Color.BLUE);
 //            controller.options.distance = "NFL Record";
 //            controller.winXMax = 300;
 //            controller.winYMax = 200;
