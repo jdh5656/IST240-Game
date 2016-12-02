@@ -28,10 +28,12 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     Timer tAccuracy;
     Timer tPower;
     Timer tWind;
+    Timer tMessage;
     int limit = 0;  
     int aDelay = 0;
     int dDelay = 0;
     int wDelay = 0;
+    int mDelay = 0;
     int i = 0;
     int j = 0;
     int a = 1, vA = 1;
@@ -51,6 +53,9 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         ImageIcon southWest = new ImageIcon("images/southwest.png");
         ImageIcon east = new ImageIcon("images/east.png");
         ImageIcon west = new ImageIcon("images/west.png");
+        ImageIcon fieldgoal = new ImageIcon("images/fieldgoal.png");
+        ImageIcon blank = new ImageIcon("images/blank.png");
+        ImageIcon missed = new ImageIcon("images/missed.png");
 
     public GameCard(GameController ctrl)
     {
@@ -72,6 +77,10 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         tWind = new Timer(wDelay, this);
         tWind.start();
         
+        //-------MESSAGE TIMER------------------------------------------
+        mDelay = 1*1000;
+        tMessage = new Timer(mDelay, this);
+        
         //Create JButtons
         b1 = new JButton("Start Game");
         b1.addActionListener(this);
@@ -81,10 +90,16 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         b2.addActionListener(this);
         b2.setHorizontalAlignment(JButton.CENTER);
         
-        b6 = new JButton("Test Selection");
+        //Win or miss
+        b6 = new JButton("");
         b6.addActionListener(this);
         b6.setHorizontalAlignment(JButton.CENTER);
+        b6.setHorizontalTextPosition(SwingConstants.CENTER);
+        b6.setBorder(null);
+        b6.setBorderPainted(false);
+        b6.setContentAreaFilled(false);
         
+        //Compass
         b7 = new JButton("");
         b7.addActionListener(this);
         b7.setHorizontalAlignment(JButton.CENTER);
@@ -92,7 +107,6 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         b7.setBorder(null);
         b7.setBorderPainted(false);
         b7.setContentAreaFilled(false);
-        //b7.setBackground(Color.TRANSLUCENT);
         
         
         //Create Sliders
@@ -117,7 +131,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         //Add Components
         add(b1);
         add(b2);
-        //add(b6);
+        add(b6);
         add(accuracy);
         add(power);
         add(pMessage);
@@ -138,7 +152,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         power.setBounds(new Rectangle(800,400,100,300));
         b1.setBounds(new Rectangle(100,10,100,100));
         b2.setBounds(new Rectangle(100,120,100,100));
-        b6.setBounds(1000, 600, 200, 100);
+        b6.setBounds(300, 50, 750, 400);
         pMessage.setBounds(new Rectangle(100,260,200,20));
         aMessage.setBounds(new Rectangle(100,230,200,20));
         wMessage.setBounds(new Rectangle(1000,230,200,20));
@@ -179,15 +193,20 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                     if (winLose == 1)
                     {
                         rMessage.setText("You Win!!");
+                        b6.setIcon(fieldgoal);
+                        tAccuracy.stop();
+                        tMessage.start();
+                        
                     }
                     else {
                         rMessage.setText("You Lose :(");
+                        b6.setIcon(missed);
+                        tMessage.start();
                     }
                     System.out.println(kickPoint[0]+","+kickPoint[1]+" "+winLose);
                     
                     //----------RESETS THE GAME----------------
                     keyCounter = 0;
-                    tAccuracy.start();
                     p = 0;
                     a = 0;
                     accuracy.setValue(0);
@@ -274,7 +293,13 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                     wy = -1;
                     wMessage.setText("North West");
                     b7.setIcon(northWest);
-                }                   
+                }
+            }
+            if (obj == tMessage) 
+            {
+                tAccuracy.start();
+                tMessage.stop();
+                b6.setIcon(blank);
             }
             
             repaint();
