@@ -85,10 +85,14 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         b6.addActionListener(this);
         b6.setHorizontalAlignment(JButton.CENTER);
         
-        b7 = new JButton("Wind ICON Photo Goes THere");
+        b7 = new JButton("");
         b7.addActionListener(this);
         b7.setHorizontalAlignment(JButton.CENTER);
-        b7.setBackground(Color.RED);
+        b7.setHorizontalTextPosition(SwingConstants.CENTER);
+        b7.setBorder(null);
+        b7.setBorderPainted(false);
+        b7.setContentAreaFilled(false);
+        //b7.setBackground(Color.TRANSLUCENT);
         
         
         //Create Sliders

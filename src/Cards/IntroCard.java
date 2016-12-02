@@ -13,7 +13,7 @@ import javax.swing.event.ChangeEvent;
  */
 public class IntroCard extends JPanel implements ActionListener, javax.swing.event.ChangeListener{
 
-    JButton b1;
+    public JButton b1;
     
     
     public IntroCard()
@@ -29,14 +29,12 @@ public class IntroCard extends JPanel implements ActionListener, javax.swing.eve
         l1.setHorizontalAlignment(JLabel.CENTER);
         
         //Create JButtons
-        JButton b1 = new JButton("Start");
+        b1 = new JButton("Start");
         b1.setHorizontalAlignment(JButton.CENTER);
         
         //Add Components
         add(l1);
         add(b1);
-        
-        b1.addActionListener(this);
         
         // Add leaderboard
     }
@@ -46,7 +44,7 @@ public class IntroCard extends JPanel implements ActionListener, javax.swing.eve
         Object obj = e.getSource();
             if (obj == b1){ 
             //Need to add code to swap to game    
-            //gameCards.cards.show(gameCards, "Game");
+            
             }
     }
 

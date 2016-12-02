@@ -56,7 +56,6 @@ public class GameCardsJPanel extends JPanel
         add(designers, CDESIGNERS);  
         add(game, CGAME);
         add(options, COPTIONS);
-        
     }
 
 }
