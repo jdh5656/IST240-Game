@@ -23,7 +23,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     JTextArea wMessage = new JTextArea("Wind direction will be displayed here");
     JTextArea rMessage = new JTextArea("Outcome of kick will be shown here");
     JSlider accuracy, power;
-    JButton b1, b2, b5, b6;
+    JButton b1, b2, b5, b6,b7;
     JLabel l1, l2;
     Timer tAccuracy;
     Timer tPower;
@@ -42,6 +42,15 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     int kickPoint[];
     int winLose;
     int keyCounter = 0;
+    
+    ImageIcon north = new ImageIcon("images/north.png");
+        ImageIcon northEast = new ImageIcon("images/northeast.png");
+        ImageIcon northWest = new ImageIcon("images/northwest.png");
+        ImageIcon south = new ImageIcon("images/south.png");
+        ImageIcon southEast = new ImageIcon("images/southeast.png");
+        ImageIcon southWest = new ImageIcon("images/southwest.png");
+        ImageIcon east = new ImageIcon("images/east.png");
+        ImageIcon west = new ImageIcon("images/west.png");
 
     public GameCard(GameController ctrl)
     {
@@ -76,6 +85,11 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         b6.addActionListener(this);
         b6.setHorizontalAlignment(JButton.CENTER);
         
+        b7 = new JButton("Wind ICON Photo Goes THere");
+        b7.addActionListener(this);
+        b7.setHorizontalAlignment(JButton.CENTER);
+        b7.setBackground(Color.RED);
+        
         
         //Create Sliders
         accuracy = new JSlider(JSlider.HORIZONTAL,0,100,0);
@@ -91,13 +105,15 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         //Create Graphics
         ImageIcon gBackground = new ImageIcon ("images/gameMain.png");
         l2 = new JLabel(gBackground);
-       
+        
+        
+        
         
         
         //Add Components
         add(b1);
         add(b2);
-        add(b6);
+        //add(b6);
         add(accuracy);
         add(power);
         add(pMessage);
@@ -107,7 +123,9 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         add(controller.optionsDifficulty);
         add(controller.optionsWind);
         add(controller.optionsDistance);
+        add(b7);
         add(l2);
+        
     
         
         //------------Placing------------------------------------
@@ -125,6 +143,8 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         controller.optionsDifficulty.setBounds(new Rectangle(10,580,200,20));
         controller.optionsWind.setBounds(new Rectangle(10,620,200,20));
         controller.optionsDistance.setBounds(new Rectangle(10,660,200,20));
+        
+        b7.setBounds(new Rectangle(1000,525,160,160));
  
     }
 
@@ -200,48 +220,56 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                     wx = 1;
                     wy = 0;
                     wMessage.setText("East");
+                    b7.setIcon(east);
                 }
                 else if (wRandom <= 2) //South
                 {
                     wx = 0;
                     wy = -1;
                     wMessage.setText("South");
+                    b7.setIcon(south);
                 }
                 else if (wRandom <= 3) //West
                 {
                     wx = -1;
                     wy = 0;
                     wMessage.setText("West");
+                    b7.setIcon(west);
                 }             
                 else if (wRandom <= 4)//North
                 {
                     wx = 0;
                     wy = 1;
                     wMessage.setText("North");
+                    b7.setIcon(north);
                 }
                 else if (wRandom <= 5) //North West
                 {
                     wx = -1;
                     wy = 1;
                     wMessage.setText("North West");
+                    b7.setIcon(northWest);
                 }
                 else if (wRandom <= 6) //South West
                 {
                     wx = -1;
                     wy = -1;
                     wMessage.setText("South West");
+                    b7.setIcon(southWest);
                 }
                 else if (wRandom <= 7) //North East
                 {
                     wx = 1;
                     wy = 1;
                     wMessage.setText("North East");
+                    b7.setIcon(northEast);
                 }
                 else if (wRandom <= 8) //North West
                 {
                     wx = 1;
                     wy = -1;
                     wMessage.setText("North West");
+                    b7.setIcon(northWest);
                 }                   
             }
             

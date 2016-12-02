@@ -1,14 +1,21 @@
 package Cards;
 
+
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
 
 /**
  *
  * @author nickonofrio
  */
-public class IntroCard extends JPanel {
+public class IntroCard extends JPanel implements ActionListener, javax.swing.event.ChangeListener{
 
+    JButton b1;
+    
+    
     public IntroCard()
     {
         super();
@@ -16,7 +23,7 @@ public class IntroCard extends JPanel {
         GridLayout grid = new GridLayout(6,1);
         setLayout(grid);
         setBackground(Color.orange);
-        
+                
         //Create JLabels
         JLabel l1 = new JLabel("Welcome to our Game");
         l1.setHorizontalAlignment(JLabel.CENTER);
@@ -29,7 +36,23 @@ public class IntroCard extends JPanel {
         add(l1);
         add(b1);
         
+        b1.addActionListener(this);
+        
         // Add leaderboard
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Object obj = e.getSource();
+            if (obj == b1){ 
+            //Need to add code to swap to game    
+            //gameCards.cards.show(gameCards, "Game");
+            }
+    }
+
+    @Override
+    public void stateChanged(ChangeEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
