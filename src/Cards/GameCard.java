@@ -162,7 +162,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         controller.optionsWind.setBounds(new Rectangle(10,620,200,20));
         controller.optionsDistance.setBounds(new Rectangle(10,660,200,20));
         
-        b7.setBounds(new Rectangle(1000,525,160,160));
+        b7.setBounds(new Rectangle(1000,60,160,160));
  
     }
 
