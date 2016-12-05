@@ -24,7 +24,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     JTextArea rMessage = new JTextArea("Outcome of kick will be shown here");
     JTextArea scoreMessage = new JTextArea("Score will be shown here");
     JSlider accuracy, power;
-    JButton b1, b2, b5, b6,b7;
+    JButton b1, b2, b5, b6,b7,ball;
     JLabel l1, l2;
     Timer tAccuracy;
     Timer tPower;
@@ -58,6 +58,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         ImageIcon fieldgoal = new ImageIcon("images/fieldgoal.png");
         ImageIcon blank = new ImageIcon("images/blank.png");
         ImageIcon missed = new ImageIcon("images/missed.png");
+        ImageIcon football = new ImageIcon("images/football1.png");
 
     public GameCard(GameController ctrl)
     {
@@ -109,6 +110,17 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         b7.setBorder(null);
         b7.setBorderPainted(false);
         b7.setContentAreaFilled(false);
+        b7.setIcon(north);
+        
+        //Football
+        ball = new JButton("");
+        ball.addActionListener(this);
+        ball.setHorizontalAlignment(JButton.CENTER);
+        ball.setHorizontalTextPosition(SwingConstants.CENTER);
+        ball.setBorder(null);
+        ball.setBorderPainted(false);
+        ball.setContentAreaFilled(false);
+        ball.setIcon(football);
         
         
         //Create Sliders
@@ -134,6 +146,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         add(b1);
         add(b2);
         add(b6);
+        add(ball);
         add(accuracy);
         add(power);
         add(pMessage);
@@ -167,6 +180,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         controller.optionsDistance.setBounds(new Rectangle(10,660,200,20));
         
         b7.setBounds(new Rectangle(1000,60,160,160));
+        ball.setBounds(new Rectangle(625,500,40,70));
  
     }
 
