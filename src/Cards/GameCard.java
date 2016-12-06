@@ -132,11 +132,14 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         accuracy.setMajorTickSpacing(25);
         accuracy.setBorder(BorderFactory.createTitledBorder("Accuracy"));
         accuracy.setPaintTicks(true);
+        Color acc = new Color(118, 224, 92);
+        accuracy.setBackground(acc);
         
         power = new JSlider(JSlider.VERTICAL,0,100,0);
         power.setMajorTickSpacing(25);
         power.setBorder(BorderFactory.createTitledBorder("power"));
         power.setPaintTicks(true);
+        power.setBackground(acc);
         
         //Create Graphics
         ImageIcon gBackground = new ImageIcon ("images/gameMain.png");
@@ -168,10 +171,10 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         
         //------------Placing------------------------------------
         // x,y, length, height)
-        accuracy.setBounds(new Rectangle(500,600,300,100));
-        power.setBounds(new Rectangle(800,400,100,300));
-        b1.setBounds(new Rectangle(100,10,120,76));
-        b2.setBounds(new Rectangle(100,120,120,76));
+        accuracy.setBounds(new Rectangle(500,625,300,75));
+        power.setBounds(new Rectangle(800,400,75,300));
+        b1.setBounds(new Rectangle(100,20,120,76));
+        b2.setBounds(new Rectangle(100,110,120,76));
         b6.setBounds(300, 50, 750, 400);
         pMessage.setBounds(new Rectangle(100,260,200,20));
         aMessage.setBounds(new Rectangle(100,230,200,20));
@@ -182,7 +185,6 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         controller.optionsDifficulty.setBounds(new Rectangle(10,580,200,20));
         controller.optionsWind.setBounds(new Rectangle(10,620,200,20));
         controller.optionsDistance.setBounds(new Rectangle(10,660,200,20));
-        
         b7.setBounds(new Rectangle(1000,60,160,160));
         ball.setBounds(new Rectangle(625,500,40,70));
  
