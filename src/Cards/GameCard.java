@@ -48,17 +48,19 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     int score = 0;
     
     ImageIcon north = new ImageIcon("images/north.png");
-        ImageIcon northEast = new ImageIcon("images/northeast.png");
-        ImageIcon northWest = new ImageIcon("images/northwest.png");
-        ImageIcon south = new ImageIcon("images/south.png");
-        ImageIcon southEast = new ImageIcon("images/southeast.png");
-        ImageIcon southWest = new ImageIcon("images/southwest.png");
-        ImageIcon east = new ImageIcon("images/east.png");
-        ImageIcon west = new ImageIcon("images/west.png");
-        ImageIcon fieldgoal = new ImageIcon("images/fieldgoal.png");
-        ImageIcon blank = new ImageIcon("images/blank.png");
-        ImageIcon missed = new ImageIcon("images/missed.png");
-        ImageIcon football = new ImageIcon("images/football1.png");
+    ImageIcon northEast = new ImageIcon("images/northeast.png");
+    ImageIcon northWest = new ImageIcon("images/northwest.png");
+    ImageIcon south = new ImageIcon("images/south.png");
+    ImageIcon southEast = new ImageIcon("images/southeast.png");
+    ImageIcon southWest = new ImageIcon("images/southwest.png");
+    ImageIcon east = new ImageIcon("images/east.png");
+    ImageIcon west = new ImageIcon("images/west.png");
+    ImageIcon fieldgoal = new ImageIcon("images/fieldgoal.png");
+    ImageIcon blank = new ImageIcon("images/blank.png");
+    ImageIcon missed = new ImageIcon("images/missed.png");
+    ImageIcon football = new ImageIcon("images/football1.png");
+    ImageIcon start = new ImageIcon("images/start.png");
+    ImageIcon stop = new ImageIcon("images/stop.png");
 
     public GameCard(GameController ctrl)
     {
@@ -85,13 +87,15 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         tMessage = new Timer(mDelay, this);
         
         //Create JButtons
-        b1 = new JButton("Start Game");
+        b1 = new JButton();
         b1.addActionListener(this);
         b1.setHorizontalAlignment(JButton.CENTER);
-        
-        b2 = new JButton("Stop Slider");
+        b1.setIcon(start);
+    
+        b2 = new JButton();
         b2.addActionListener(this);
         b2.setHorizontalAlignment(JButton.CENTER);
+        b2.setIcon(stop);
         
         //Win or miss
         b6 = new JButton("");
@@ -166,8 +170,8 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         // x,y, length, height)
         accuracy.setBounds(new Rectangle(500,600,300,100));
         power.setBounds(new Rectangle(800,400,100,300));
-        b1.setBounds(new Rectangle(100,10,100,100));
-        b2.setBounds(new Rectangle(100,120,100,100));
+        b1.setBounds(new Rectangle(100,10,120,76));
+        b2.setBounds(new Rectangle(100,120,120,76));
         b6.setBounds(300, 50, 750, 400);
         pMessage.setBounds(new Rectangle(100,260,200,20));
         aMessage.setBounds(new Rectangle(100,230,200,20));
