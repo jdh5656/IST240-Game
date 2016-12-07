@@ -53,11 +53,9 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     Timer tPower;
     Timer tWind;
     Timer tMessage;
-<<<<<<< HEAD
     Timer tBall;
-=======
+
     Timer timer;
->>>>>>> origin/master
     int limit = 0;  
     int aDelay = 0;
     int dDelay = 0;
@@ -124,11 +122,9 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         mDelay = 1*1000;
         tMessage = new Timer(mDelay, this);
         
-<<<<<<< HEAD
         //--------Animation Timer-------------------------------------
         bDelay = 30;
         tBall = new Timer(bDelay, this);
-=======
         //-------Game Timer---------------------------------------------
         
         
@@ -153,7 +149,6 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
             });
             timer.setInitialDelay(0);
             countMessage = new JLabel("Time Remaining");
->>>>>>> origin/master
         
         //Create JButtons
         b1 = new JButton();
@@ -257,15 +252,11 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         controller.optionsWind.setBounds(new Rectangle(10,620,200,20));
         controller.optionsDistance.setBounds(new Rectangle(10,660,200,20));
         b7.setBounds(new Rectangle(1000,60,160,160));
-<<<<<<< HEAD
         ball.setBounds(new Rectangle(ballx,bally,40,70));
-=======
-        ball.setBounds(new Rectangle(625,500,40,70));
         countMessage.setBounds(new Rectangle(600,10,150,20));
         gameStatus.setBounds(new Rectangle(550,30,150,20));
 
-    
->>>>>>> origin/master
+
  
     }
     
@@ -277,14 +268,11 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                 tAccuracy.start();
                 score = 0;
                 scoreMessage.setText("Score: " + score);
-<<<<<<< HEAD
                 b1.setVisible(false);
-=======
                 if (!timer.isRunning()) {
                         startTime = -1;
                         timer.start();
               }
->>>>>>> origin/master
             }
             
             if (obj == b2){
