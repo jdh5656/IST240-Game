@@ -76,7 +76,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     int keyCounter = 0;
     int score = 0;
     long startTime = -1;
-    long duration = 5000;
+    long duration = 10000;
    
 
 
@@ -141,12 +141,13 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                         gameStatus.setText("TIME HAS EXPIRED!!");
                         jbGameOver.setVisible(true);
                         //----stop timers, reset game, etc
-                        b2.setVisible(false);
                         b1.setVisible(true);
                         accuracy.setValue(0);
                         power.setValue(0);
                         tPower.stop();
                         tAccuracy.stop();
+                        keyCounter = 0;
+                        b2.setVisible(false);
                     }
                     SimpleDateFormat df = new SimpleDateFormat("ss:S");
                     countMessage.setText(df.format(duration - clockTime));
@@ -165,6 +166,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         b2.addActionListener(this);
         b2.setHorizontalAlignment(JButton.CENTER);
         b2.setIcon(stop);
+        b2.setVisible(false);
         
         //Win or miss
         b6 = new JButton("");
@@ -320,8 +322,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                         tAccuracy.stop();
                         tMessage.start();
                         score = (score + 1);
-                        scoreMessage.setText("Score: " + score);
-                        
+                        scoreMessage.setText("Score: " + score);                        
                     }
                     else {
                         rMessage.setText("You Lose :(");
@@ -441,8 +442,8 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                 ball.setBounds(animatex+ballx, animatey+bally, 40, 70);
                 System.out.println("animatex" + animatex + " animatey:"+ animatey); 
                 }
-
-
+                else {
+                }
             }
             
             repaint();
