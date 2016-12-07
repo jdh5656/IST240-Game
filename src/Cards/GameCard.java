@@ -44,7 +44,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     JTextArea wMessage = new JTextArea("Wind direction will be displayed here");
     JTextArea rMessage = new JTextArea("Outcome of kick will be shown here");
     JTextArea scoreMessage = new JTextArea("Score will be shown here");
-    JTextArea gameStatus = new JTextArea(" ");
+    JLabel gameStatus = new JLabel(" ");
     JSlider accuracy, power;
     JButton b1, b2, b5, b6,b7,ball,jbGameOver;
     JLabel l1, l2;
@@ -435,8 +435,8 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
             }
             if (obj == tBall)
             {
-                animatex = animatex-(ballx - kickPoint[0])/30;
-                animatey = animatey-(bally - kickPoint[1])/30;
+                animatex = animatex-(ballx + kickPoint[0])/30;
+                animatey = animatey-(bally + kickPoint[1])/30;
                 if((animatey+bally) > kickPoint[1])
                 {
                 ball.setBounds(animatex+ballx, animatey+bally, 40, 70);
