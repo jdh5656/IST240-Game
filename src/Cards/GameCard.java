@@ -30,15 +30,19 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     Timer tPower;
     Timer tWind;
     Timer tMessage;
+    Timer tBall;
     int limit = 0;  
     int aDelay = 0;
     int dDelay = 0;
     int wDelay = 0;
     int mDelay = 0;
+    int bDelay = 0;
     int i = 0;
     int j = 0;
     int a = 1, vA = 1;
     int p = 1, vP = 1;
+    int animatex = 0, animatey = 0;
+    int ballx = 625, bally = 500;
     double wRandom = Math.random() * 4;
     double wx = 1;
     double wy = 1;
@@ -85,6 +89,10 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         //-------MESSAGE TIMER------------------------------------------
         mDelay = 1*1000;
         tMessage = new Timer(mDelay, this);
+        
+        //--------Animation Timer-------------------------------------
+        bDelay = 30;
+        tBall = new Timer(bDelay, this);
         
         //Create JButtons
         b1 = new JButton();
@@ -186,7 +194,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         controller.optionsWind.setBounds(new Rectangle(10,620,200,20));
         controller.optionsDistance.setBounds(new Rectangle(10,660,200,20));
         b7.setBounds(new Rectangle(1000,60,160,160));
-        ball.setBounds(new Rectangle(625,500,40,70));
+        ball.setBounds(new Rectangle(ballx,bally,40,70));
  
     }
 
@@ -198,6 +206,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                 tAccuracy.start();
                 score = 0;
                 scoreMessage.setText("Score: " + score);
+                b1.setVisible(false);
             }
             
             if (obj == b2){
@@ -232,6 +241,8 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                         tMessage.start();
                     }
                     System.out.println(kickPoint[0]+","+kickPoint[1]+" "+winLose);
+                    tBall.start();
+                    
                     
                     //----------RESETS THE GAME----------------
                     keyCounter = 0;
@@ -327,7 +338,18 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
             {
                 tAccuracy.start();
                 tMessage.stop();
+                tBall.stop();
                 b6.setIcon(blank);
+                animatex = 0;
+                animatey = 0;
+                ball.setBounds(ballx, bally, 40, 70);
+            }
+            if (obj == tBall)
+            {
+                animatex = animatex-(ballx - kickPoint[0])/40;
+                animatey = animatey-(bally - kickPoint[1])/30;
+                ball.setBounds(animatex+ballx, animatey+bally, 40, 70);
+                System.out.println("animatex" + animatex + " animatey:"+ animatey);
             }
             
             repaint();
