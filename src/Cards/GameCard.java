@@ -9,6 +9,27 @@ import java.lang.reflect.Array;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import Cards.OptionsCard;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
+
+
+import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -23,14 +44,20 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     JTextArea wMessage = new JTextArea("Wind direction will be displayed here");
     JTextArea rMessage = new JTextArea("Outcome of kick will be shown here");
     JTextArea scoreMessage = new JTextArea("Score will be shown here");
+    JTextArea gameStatus = new JTextArea(" ");
     JSlider accuracy, power;
     JButton b1, b2, b5, b6,b7,ball;
     JLabel l1, l2;
+    JLabel countMessage;
     Timer tAccuracy;
     Timer tPower;
     Timer tWind;
     Timer tMessage;
+<<<<<<< HEAD
     Timer tBall;
+=======
+    Timer timer;
+>>>>>>> origin/master
     int limit = 0;  
     int aDelay = 0;
     int dDelay = 0;
@@ -50,6 +77,13 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     int winLose;
     int keyCounter = 0;
     int score = 0;
+    
+    long startTime = -1;
+    long duration = 5000;
+   
+
+
+    
     
     ImageIcon north = new ImageIcon("images/north.png");
     ImageIcon northEast = new ImageIcon("images/northeast.png");
@@ -90,9 +124,36 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         mDelay = 1*1000;
         tMessage = new Timer(mDelay, this);
         
+<<<<<<< HEAD
         //--------Animation Timer-------------------------------------
         bDelay = 30;
         tBall = new Timer(bDelay, this);
+=======
+        //-------Game Timer---------------------------------------------
+        
+        
+        
+        timer = new Timer(10, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (startTime < 0) {
+                        startTime = System.currentTimeMillis();
+                    }
+                    long now = System.currentTimeMillis();
+                    long clockTime = now - startTime;
+                    if (clockTime >= duration) {
+                        clockTime = duration;
+                        timer.stop();
+                        gameStatus.setText("TIME HAS EXPIRED!!");
+                        
+                    }
+                    SimpleDateFormat df = new SimpleDateFormat("ss:S");
+                    countMessage.setText(df.format(duration - clockTime));
+                }
+            });
+            timer.setInitialDelay(0);
+            countMessage = new JLabel("Time Remaining");
+>>>>>>> origin/master
         
         //Create JButtons
         b1 = new JButton();
@@ -148,14 +209,14 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         power.setBorder(BorderFactory.createTitledBorder("power"));
         power.setPaintTicks(true);
         power.setBackground(acc);
-        
+                
         //Create Graphics
         ImageIcon gBackground = new ImageIcon ("images/gameMain.png");
         l2 = new JLabel(gBackground);
         
-        
-        
-        
+
+            
+
         
         //Add Components
         add(b1);
@@ -173,6 +234,8 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         add(controller.optionsWind);
         add(controller.optionsDistance);
         add(b7);
+        add(countMessage);
+        add(gameStatus);
         add(l2);
         
     
@@ -194,10 +257,18 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         controller.optionsWind.setBounds(new Rectangle(10,620,200,20));
         controller.optionsDistance.setBounds(new Rectangle(10,660,200,20));
         b7.setBounds(new Rectangle(1000,60,160,160));
+<<<<<<< HEAD
         ball.setBounds(new Rectangle(ballx,bally,40,70));
+=======
+        ball.setBounds(new Rectangle(625,500,40,70));
+        countMessage.setBounds(new Rectangle(600,10,150,20));
+        gameStatus.setBounds(new Rectangle(550,30,150,20));
+
+    
+>>>>>>> origin/master
  
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         Object obj = e.getSource();
@@ -206,7 +277,14 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                 tAccuracy.start();
                 score = 0;
                 scoreMessage.setText("Score: " + score);
+<<<<<<< HEAD
                 b1.setVisible(false);
+=======
+                if (!timer.isRunning()) {
+                        startTime = -1;
+                        timer.start();
+              }
+>>>>>>> origin/master
             }
             
             if (obj == b2){
