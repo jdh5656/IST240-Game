@@ -329,6 +329,8 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                         b6.setIcon(missed);
                         tMessage.start();
                     }
+                    kickPoint[0] = kickPoint[0] + (1300 - controller.kickX);
+                    kickPoint[1] = kickPoint[1] + (800 - controller.kickY);
                     System.out.println(kickPoint[0]+","+kickPoint[1]+" "+winLose);
                     tBall.start();
                     
@@ -437,10 +439,27 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
             {
                 animatex = animatex-(ballx - kickPoint[0])/30;
                 animatey = animatey-(bally - kickPoint[1])/30;
+                if (kickPoint[0] >= 625) 
+                {
+                    if ((animatey+bally) > kickPoint[1])
+                    {
+                        ball.setBounds(animatex+ballx, animatey+bally, 40, 70);
+                        System.out.println("animatex" + animatex + " animatey:"+ animatey); 
+                    } 
+                }
+                if (kickPoint[0] < 625)
+                {
+                    if((animatey+bally) > kickPoint[1])
+                    {
+                        animatex = animatex-(ballx - kickPoint[0])/30;
+                        animatey = animatey-(bally - kickPoint[1])/30;
+                        ball.setBounds(animatex+ballx, animatey+bally, 40, 70);
+                        System.out.println("animatex" + animatex + " animatey:"+ animatey); 
+                    }
+                }
                 if((animatey+bally) > kickPoint[1])
                 {
-                ball.setBounds(animatex+ballx, animatey+bally, 40, 70);
-                System.out.println("animatex" + animatex + " animatey:"+ animatey); 
+
                 }
                 else {
                 }
