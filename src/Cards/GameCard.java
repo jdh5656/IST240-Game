@@ -46,7 +46,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     JTextArea scoreMessage = new JTextArea("Score will be shown here");
     JTextArea gameStatus = new JTextArea(" ");
     JSlider accuracy, power;
-    JButton b1, b2, b5, b6,b7,ball;
+    JButton b1, b2, b5, b6,b7,ball,jbGameOver;
     JLabel l1, l2;
     JLabel countMessage;
     Timer tAccuracy;
@@ -75,7 +75,6 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     int winLose;
     int keyCounter = 0;
     int score = 0;
-    
     long startTime = -1;
     long duration = 5000;
    
@@ -97,6 +96,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     ImageIcon football = new ImageIcon("images/football1.png");
     ImageIcon start = new ImageIcon("images/start.png");
     ImageIcon stop = new ImageIcon("images/stop.png");
+    ImageIcon gameover = new ImageIcon("images/gameover.png");
 
     public GameCard(GameController ctrl)
     {
@@ -119,16 +119,14 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         tWind.start();
         
         //-------MESSAGE TIMER------------------------------------------
-        mDelay = 1*1000;
+        mDelay = 2*1000;
         tMessage = new Timer(mDelay, this);
         
         //--------Animation Timer-------------------------------------
         bDelay = 30;
         tBall = new Timer(bDelay, this);
+        
         //-------Game Timer---------------------------------------------
-        
-        
-        
         timer = new Timer(10, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -141,7 +139,13 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                         clockTime = duration;
                         timer.stop();
                         gameStatus.setText("TIME HAS EXPIRED!!");
-                        
+                        jbGameOver.setVisible(true);
+                        //----stop timers, reset game, etc
+                        b1.setVisible(true);
+                        tPower.stop();
+                        tAccuracy.stop();
+                        accuracy.setValue(0);
+                        power.setValue(0);                        
                     }
                     SimpleDateFormat df = new SimpleDateFormat("ss:S");
                     countMessage.setText(df.format(duration - clockTime));
@@ -190,6 +194,15 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         ball.setContentAreaFilled(false);
         ball.setIcon(football);
         
+        //game over
+        jbGameOver = new JButton("");
+        jbGameOver.addActionListener(this);
+        jbGameOver.setHorizontalAlignment(JButton.CENTER);
+        jbGameOver.setHorizontalTextPosition(SwingConstants.CENTER);
+        jbGameOver.setBorder(null);
+        jbGameOver.setBorderPainted(false);
+        jbGameOver.setContentAreaFilled(false);
+        jbGameOver.setIcon(gameover);
         
         //Create Sliders
         accuracy = new JSlider(JSlider.HORIZONTAL,0,100,0);
@@ -231,7 +244,9 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         add(b7);
         add(countMessage);
         add(gameStatus);
+        add(jbGameOver);
         add(l2);
+        
         
     
         
@@ -255,6 +270,8 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         ball.setBounds(new Rectangle(ballx,bally,40,70));
         countMessage.setBounds(new Rectangle(600,10,150,20));
         gameStatus.setBounds(new Rectangle(550,30,150,20));
+        jbGameOver.setBounds(360, 200, 580, 130); jbGameOver.setVisible(false);
+        
 
 
  
@@ -269,6 +286,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                 score = 0;
                 scoreMessage.setText("Score: " + score);
                 b1.setVisible(false);
+                jbGameOver.setVisible(false);
                 if (!timer.isRunning()) {
                         startTime = -1;
                         timer.start();
@@ -276,6 +294,8 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
             }
             
             if (obj == b2){
+                //keyCounter determines which stage of the kick we are at
+                //"0" is accuracy "1" is power
                 if (keyCounter == 0)
                 {
                     tAccuracy.stop();
@@ -412,7 +432,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
             }
             if (obj == tBall)
             {
-                animatex = animatex-(ballx - kickPoint[0])/40;
+                animatex = animatex-(ballx - kickPoint[0])/30;
                 animatey = animatey-(bally - kickPoint[1])/30;
                 ball.setBounds(animatex+ballx, animatey+bally, 40, 70);
                 System.out.println("animatex" + animatex + " animatey:"+ animatey);
