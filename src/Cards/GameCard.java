@@ -141,11 +141,12 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                         gameStatus.setText("TIME HAS EXPIRED!!");
                         jbGameOver.setVisible(true);
                         //----stop timers, reset game, etc
+                        b2.setVisible(false);
                         b1.setVisible(true);
+                        accuracy.setValue(0);
+                        power.setValue(0);
                         tPower.stop();
                         tAccuracy.stop();
-                        accuracy.setValue(0);
-                        power.setValue(0);                        
                     }
                     SimpleDateFormat df = new SimpleDateFormat("ss:S");
                     countMessage.setText(df.format(duration - clockTime));
@@ -286,6 +287,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                 score = 0;
                 scoreMessage.setText("Score: " + score);
                 b1.setVisible(false);
+                b2.setVisible(true);
                 jbGameOver.setVisible(false);
                 if (!timer.isRunning()) {
                         startTime = -1;
@@ -434,8 +436,13 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
             {
                 animatex = animatex-(ballx - kickPoint[0])/30;
                 animatey = animatey-(bally - kickPoint[1])/30;
+                if((animatey+bally) > kickPoint[1])
+                {
                 ball.setBounds(animatex+ballx, animatey+bally, 40, 70);
-                System.out.println("animatex" + animatex + " animatey:"+ animatey);
+                System.out.println("animatex" + animatex + " animatey:"+ animatey); 
+                }
+
+
             }
             
             repaint();
