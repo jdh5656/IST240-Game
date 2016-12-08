@@ -47,8 +47,8 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     JLabel gameStatus = new JLabel(" ");
     JSlider accuracy, power;
     JButton b1, b2, b5, b6,b7,ball,jbGameOver;
-    JLabel l1, l2;
-    JLabel countMessage;
+    JLabel l1, l2,countMessage;
+    JLabel showScore = new JLabel(" ");
     Timer tAccuracy;
     Timer tPower;
     Timer tWind;
@@ -228,6 +228,10 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         power.setBorder(BorderFactory.createTitledBorder("power"));
         power.setPaintTicks(true);
         power.setBackground(acc);
+        
+        //Score or Miss Font
+        showScore.setForeground(Color.BLACK);
+        showScore.setFont(showScore.getFont().deriveFont(64.0f));
                 
         //Create Graphics
         ImageIcon gBackground = new ImageIcon ("images/gameMain.png");
@@ -240,7 +244,8 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         //Add Components
         add(b1);
         add(b2);
-        add(b6);
+        //add(b6);
+        add(showScore);
         add(ball);
         add(accuracy);
         add(power);
@@ -268,6 +273,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         b1.setBounds(new Rectangle(100,110,120,76));
         b2.setBounds(new Rectangle(100,110,120,76));
         b6.setBounds(300, 50, 750, 400);
+        showScore.setBounds(new Rectangle(550, 50, 750, 400));
         pMessage.setBounds(new Rectangle(100,260,200,20));
         aMessage.setBounds(new Rectangle(100,230,200,20));
         wMessage.setBounds(new Rectangle(1000,230,200,20));
@@ -294,6 +300,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                 scoreMessage.setText("Score: " + score);
                 b1.setVisible(false);
                 b2.setVisible(true);
+                gameStatus.setText("");
                 jbGameOver.setVisible(false);
                 if (!timer.isRunning()) {
                         startTime = -1;
@@ -327,11 +334,13 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                         tAccuracy.stop();
                         tMessage.start();
                         score = (score + 1);
+                        showScore.setText(""+score);
                         scoreMessage.setText("Score: " + score);                        
                     }
                     else {
                         rMessage.setText("You Lose :(");
                         b6.setIcon(missed);
+                        showScore.setText("MISS!");
                         tMessage.start();
                     }
                     kickPoint[0] = kickPoint[0] + ((1300 - (controller.kickX))/2);
@@ -436,6 +445,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                 tMessage.stop();
                 tBall.stop();
                 b6.setIcon(blank);
+                showScore.setText("");
                 animatex = 0;
                 animatey = 0;
                 ball.setBounds(ballx, bally, 40, 70);
