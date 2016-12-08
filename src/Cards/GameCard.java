@@ -437,8 +437,10 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
             }
             if (obj == tBall)
             {
+<<<<<<< HEAD
                 animatex = animatex-(ballx + kickPoint[0])/30;
                 animatey = animatey-(bally + kickPoint[1])/30;
+=======
                 animatex = animatex-(ballx - kickPoint[0])/30;
                 animatey = animatey-(bally - kickPoint[1])/30;
                 if (kickPoint[0] >= 625) 
@@ -459,6 +461,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                         System.out.println("animatex" + animatex + " animatey:"+ animatey); 
                     }
                 }
+>>>>>>> origin/master
                 if((animatey+bally) > kickPoint[1])
                 {
 
