@@ -449,56 +449,6 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                     setY = (setY - animatey);
                     ball.setLocation((int)(setX + animatex), (int)(setY + animatey));
                 }
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-
-//                if (kickPoint[0] > 625) 
-//                {
-//                    System.out.println("setX: " + setX + " kickPoint[0]" + kickPoint[0]);
-//                    if (kickPoint[0]<setX)
-//                    {
-//                        setX = setX + animatex;
-//                        setY = setY - animatey;
-//                        ball.setBounds((int)setX, (int)setY, 40, 70);
-//                        System.out.println("setX: " + setY + " setX:"+ setY); 
-//                    } 
-//                }
-//                if (kickPoint[0] < 625)
-//                {
-//                    
-//                    if(kickPoint[0]<setX)
-//                    {
-//                        
-//                        setX = setX + animatex;
-//                        setY = setY - animatey;
-//                        ball.setBounds((int)setX, (int)setY, 40, 70);
-//                        System.out.println("setX" + setX + " setY:"+ setY); 
-//                    }
-//                }
-//
-//                animatex = animatex-(ballx + kickPoint[0])/30;
-//                animatey = animatey-(bally + kickPoint[1])/30;
-//                if((animatey+bally) > kickPoint[1])
-//                {
-//                ball.setBounds(animatex+ballx, animatey+bally, 40, 70);
-//                System.out.println("animatex" + animatex + " animatey:"+ animatey); 
-//                }
-//                else {
-//                }
-
             }
             
             repaint();
