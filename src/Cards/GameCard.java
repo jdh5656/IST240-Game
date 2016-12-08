@@ -66,7 +66,8 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     int j = 0;
     int a = 1, vA = 1;
     int p = 1, vP = 1;
-    int animatex = 0, animatey = 0;
+    double animatex = 0, animatey = 0, distance;
+    double setX = 0, setY = 0;
     int ballx = 625, bally = 500;
     double wRandom = Math.random() * 4;
     double wx = 1;
@@ -123,7 +124,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         tMessage = new Timer(mDelay, this);
         
         //--------Animation Timer-------------------------------------
-        bDelay = 30;
+        bDelay = 20;
         tBall = new Timer(bDelay, this);
         
         //-------Game Timer---------------------------------------------
@@ -311,7 +312,8 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                     
                     tPower.stop();
                     pMessage.setText("Power is: " + p);
-                    
+                    setX = ballx;
+                    setY = bally;
                     //----------CALCULATES IF WIN ------------
                     kickPoint = controller.evaluateKick(p, a, wx, wy);
                     winLose = controller.evaluateGoal(kickPoint);
@@ -329,11 +331,10 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                         b6.setIcon(missed);
                         tMessage.start();
                     }
-                    kickPoint[0] = kickPoint[0] + (1300 - controller.kickX);
+                    kickPoint[0] = kickPoint[0] + ((1300 - (controller.kickX))/2);
                     kickPoint[1] = kickPoint[1] + (800 - controller.kickY);
                     System.out.println(kickPoint[0]+","+kickPoint[1]+" "+winLose);
                     tBall.start();
-                    
                     
                     //----------RESETS THE GAME----------------
                     keyCounter = 0;
@@ -437,38 +438,59 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
             }
             if (obj == tBall)
             {
-                animatex = animatex-(ballx - kickPoint[0])/30;
-                animatey = animatey-(bally - kickPoint[1])/30;
-                if (kickPoint[0] >= 625) 
+                distance = Math.sqrt(animatex*animatex+animatey*animatey);
+                animatex = ((double)kickPoint[0]-ballx)/20;
+                animatey = ((double)kickPoint[1]-bally)/20;
+                
+                System.out.println("animatex: "+animatex+" animatey: "+animatey);
+                if (distance >0)
                 {
-                    if ((animatey+bally) > kickPoint[1])
-                    {
-                        ball.setBounds(animatex+ballx, animatey+bally, 40, 70);
-                        System.out.println("animatex" + animatex + " animatey:"+ animatey); 
-                    } 
+                    setX = (setX + animatex);
+                    setY = (setY - animatey);
+                    ball.setLocation((int)(setX + animatex), (int)(setY + animatey));
                 }
-                if (kickPoint[0] < 625)
-                {
-                    if((animatey+bally) > kickPoint[1])
-                    {
-                        animatex = animatex-(ballx - kickPoint[0])/30;
-                        animatey = animatey-(bally - kickPoint[1])/30;
-                        ball.setBounds(animatex+ballx, animatey+bally, 40, 70);
-                        System.out.println("animatex" + animatex + " animatey:"+ animatey); 
-                    }
-                }
-                if((animatey+bally) > kickPoint[1])
-                {
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
 
-                }
-                else {
-                }
+//                if (kickPoint[0] > 625) 
+//                {
+//                    System.out.println("setX: " + setX + " kickPoint[0]" + kickPoint[0]);
+//                    if (kickPoint[0]<setX)
+//                    {
+//                        setX = setX + animatex;
+//                        setY = setY - animatey;
+//                        ball.setBounds((int)setX, (int)setY, 40, 70);
+//                        System.out.println("setX: " + setY + " setX:"+ setY); 
+//                    } 
+//                }
+//                if (kickPoint[0] < 625)
+//                {
+//                    
+//                    if(kickPoint[0]<setX)
+//                    {
+//                        
+//                        setX = setX + animatex;
+//                        setY = setY - animatey;
+//                        ball.setBounds((int)setX, (int)setY, 40, 70);
+//                        System.out.println("setX" + setX + " setY:"+ setY); 
+//                    }
+//                }
             }
             
             repaint();
-        
-    
-    
     }
 
     @Override
