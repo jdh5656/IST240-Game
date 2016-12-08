@@ -13,7 +13,6 @@ public class OptionsCard extends JPanel implements ActionListener
 {
     JButton jb1,jb2,jb3,jb4,jb5,jb6,jb7,jb8,jb9;
     GameController controller;
-    int dimX = 530, dimY = 300;
 
     
     public OptionsCard(GameController ctrl)
@@ -146,12 +145,10 @@ public class OptionsCard extends JPanel implements ActionListener
             jb7.setBackground(Color.BLUE);
             jb8.setBackground(Color.GRAY);
             jb9.setBackground(Color.GRAY);
-            dimX = 530;
-            dimY = 300;
-            controller.winXMax = controller.kickX - ((controller.kickX - dimX)/2);
-            controller.winYMax = controller.kickY - ((controller.kickY - dimY)/2);
-            controller.winXMin = (controller.kickX - dimX)/2;
-            controller.winYMin = controller.kickY - controller.winYMax - dimY;
+            controller.winXMax = 415;
+            controller.winYMax = 250;
+            controller.winXMin = 115;
+            controller.winYMin = 50;
         }
         
         if(obj == jb8){
