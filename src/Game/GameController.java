@@ -17,12 +17,12 @@ public class GameController {
     public JTextArea optionsDifficulty;
     public JTextArea optionsWind;
     public JTextArea optionsDistance;
-    public int kickX = 530; //in pixels, width
-    public int kickY = 300; //in pixels, height
-    public int winXMax = 415; //in pixels
-    public int winXMin = 115; //in pixels
-    public int winYMax = 250; //in pixels
-    public int winYMin = 50; //in pixels
+    public int kickX = 700; //in pixels, width
+    public int kickY = 400; //in pixels, height
+    public int winXMax = 615; //in pixels
+    public int winXMin = 85; //in pixels
+    public int winYMax = 400; //in pixels
+    public int winYMin = 100; //in pixels
     
     
     
@@ -44,7 +44,7 @@ public class GameController {
         double baseWind = 10;
         //if power
         // Calculates x and y values BEFORE wind factor
-        if (pow >= 0 && pow <= 100) 
+        if (pow >= -1 && pow <= 101) 
         {
             y = (pow/100)*kickY;
         }
@@ -88,7 +88,6 @@ public class GameController {
         {
             if (coordinates[0] >= winXMin && coordinates[0] <= winXMax && coordinates[1] >= winYMin && coordinates[1] <= winYMax) 
             {            
-                System.out.println("test");
                 goal = 1;
             }
             else {
