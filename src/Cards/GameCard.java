@@ -232,7 +232,18 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         //Score or Miss Font
         showScore.setForeground(Color.BLACK);
         showScore.setFont(showScore.getFont().deriveFont(64.0f));
-                
+        showScore.setHorizontalAlignment(SwingConstants.CENTER);
+        showScore.setVerticalAlignment(SwingConstants.CENTER);
+        
+        //Game Status Font
+        gameStatus.setHorizontalAlignment(SwingConstants.CENTER);
+        gameStatus.setVerticalAlignment(SwingConstants.CENTER);
+        
+        //Timer Font
+        countMessage.setHorizontalAlignment(SwingConstants.CENTER);
+        countMessage.setVerticalAlignment(SwingConstants.CENTER);
+        
+        
         //Create Graphics
         ImageIcon gBackground = new ImageIcon ("images/gameMain.png");
         l2 = new JLabel(gBackground);
@@ -273,7 +284,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         b1.setBounds(new Rectangle(100,110,120,76));
         b2.setBounds(new Rectangle(100,110,120,76));
         b6.setBounds(300, 50, 750, 400);
-        showScore.setBounds(new Rectangle(550, 50, 750, 400));
+        showScore.setBounds(new Rectangle(0, 0, 1300, 200));
         pMessage.setBounds(new Rectangle(100,260,200,20));
         aMessage.setBounds(new Rectangle(100,230,200,20));
         wMessage.setBounds(new Rectangle(1000,230,200,20));
@@ -285,8 +296,8 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         controller.optionsDistance.setBounds(new Rectangle(10,660,200,20));
         b7.setBounds(new Rectangle(1000,60,160,160));
         ball.setBounds(new Rectangle(ballx,bally,40,70));
-        countMessage.setBounds(new Rectangle(600,10,150,20));
-        gameStatus.setBounds(new Rectangle(550,30,150,20));
+        countMessage.setBounds(new Rectangle(0,10,1300,20));
+        gameStatus.setBounds(new Rectangle(0,30,1300,20));
         jbGameOver.setBounds(360, 200, 580, 130); jbGameOver.setVisible(false);
     }
     
