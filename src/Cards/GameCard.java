@@ -257,7 +257,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         // x,y, length, height)
         accuracy.setBounds(new Rectangle(500,625,300,75));
         power.setBounds(new Rectangle(800,400,75,300));
-        b1.setBounds(new Rectangle(100,20,120,76));
+        b1.setBounds(new Rectangle(100,110,120,76));
         b2.setBounds(new Rectangle(100,110,120,76));
         b6.setBounds(300, 50, 750, 400);
         pMessage.setBounds(new Rectangle(100,260,200,20));
