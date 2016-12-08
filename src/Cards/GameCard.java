@@ -45,6 +45,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     JTextArea rMessage = new JTextArea("Outcome of kick will be shown here");
     JTextArea scoreMessage = new JTextArea("Score will be shown here");
     JLabel gameStatus = new JLabel(" ");
+    JLabel showFinalScore = new JLabel(" ");
     JSlider accuracy, power;
     JButton b1, b2, b5, b6,b7,ball,jbGameOver;
     JLabel l1, l2,countMessage;
@@ -147,6 +148,8 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                         clockTime = duration;
                         timer.stop();
                         gameStatus.setText("TIME HAS EXPIRED!!");
+                        showFinalScore.setText("You Scored " + score + " Field Goals");
+                        showFinalScore.setVisible(true);
                         jbGameOver.setVisible(true);
                         //----stop timers, reset game, etc
                         b1.setVisible(true);
@@ -235,6 +238,12 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         showScore.setHorizontalAlignment(SwingConstants.CENTER);
         showScore.setVerticalAlignment(SwingConstants.CENTER);
         
+        //Final Score
+        showFinalScore.setForeground(Color.BLACK);
+        showFinalScore.setFont(showScore.getFont().deriveFont(48.0f));
+        showFinalScore.setHorizontalAlignment(SwingConstants.CENTER);
+        showFinalScore.setVerticalAlignment(SwingConstants.CENTER);
+        
         //Game Status Font
         gameStatus.setHorizontalAlignment(SwingConstants.CENTER);
         gameStatus.setVerticalAlignment(SwingConstants.CENTER);
@@ -265,6 +274,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         add(wMessage);
         add(rMessage);
         add(scoreMessage);
+        add(showFinalScore);
         add(controller.optionsDifficulty);
         add(controller.optionsWind);
         add(controller.optionsDistance);
@@ -285,6 +295,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         b2.setBounds(new Rectangle(100,110,120,76));
         b6.setBounds(300, 50, 750, 400);
         showScore.setBounds(new Rectangle(0, 0, 1300, 200));
+        showFinalScore.setBounds(new Rectangle(0, 0, 1300, 200));
         pMessage.setBounds(new Rectangle(100,260,200,20));
         aMessage.setBounds(new Rectangle(100,230,200,20));
         wMessage.setBounds(new Rectangle(1000,230,200,20));
@@ -313,6 +324,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                 b2.setVisible(true);
                 gameStatus.setText("");
                 jbGameOver.setVisible(false);
+                showFinalScore.setVisible(false);
                 if (!timer.isRunning()) {
                         startTime = -1;
                         timer.start();
