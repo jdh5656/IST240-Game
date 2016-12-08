@@ -54,7 +54,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     Timer tWind;
     Timer tMessage;
     Timer tBall;
-
+    Timer tFlip;
     Timer timer;
     int limit = 0;  
     int aDelay = 0;
@@ -62,10 +62,12 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     int wDelay = 0;
     int mDelay = 0;
     int bDelay = 0;
+    int fDelay = 0;
     int i = 0;
     int j = 0;
     int a = 1, vA = 1;
     int p = 1, vP = 1;
+    int flipCount = 0;
     double animatex = 0, animatey = 0, distance;
     double setX = 0, setY = 0;
     int ballx = 625, bally = 500;
@@ -95,6 +97,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     ImageIcon blank = new ImageIcon("images/blank.png");
     ImageIcon missed = new ImageIcon("images/missed.png");
     ImageIcon football = new ImageIcon("images/football1.png");
+    ImageIcon football2 = new ImageIcon("images/football2.png");
     ImageIcon start = new ImageIcon("images/start.png");
     ImageIcon stop = new ImageIcon("images/stop.png");
     ImageIcon gameover = new ImageIcon("images/gameover.png");
@@ -126,6 +129,10 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         //--------Animation Timer-------------------------------------
         bDelay = 20;
         tBall = new Timer(bDelay, this);
+        
+        //-------Flip Timer---------------------------------------------
+        fDelay = 75;
+        tFlip = new Timer (fDelay, this);
         
         //-------Game Timer---------------------------------------------
         timer = new Timer(10, new ActionListener() {
@@ -275,10 +282,6 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         countMessage.setBounds(new Rectangle(600,10,150,20));
         gameStatus.setBounds(new Rectangle(550,30,150,20));
         jbGameOver.setBounds(360, 200, 580, 130); jbGameOver.setVisible(false);
-        
-
-
- 
     }
     
     @Override
@@ -335,6 +338,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                     kickPoint[1] = kickPoint[1] + (800 - controller.kickY);
                     System.out.println(kickPoint[0]+","+kickPoint[1]+" "+winLose);
                     tBall.start();
+                    tFlip.start();
                     
                     //----------RESETS THE GAME----------------
                     keyCounter = 0;
@@ -435,19 +439,33 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                 animatex = 0;
                 animatey = 0;
                 ball.setBounds(ballx, bally, 40, 70);
+                tBall.stop();
+                ball.setIcon(football);
             }
             if (obj == tBall)
             {
                 distance = Math.sqrt(animatex*animatex+animatey*animatey);
                 animatex = ((double)kickPoint[0]-ballx)/20;
                 animatey = ((double)kickPoint[1]-bally)/20;
-                
-                System.out.println("animatex: "+animatex+" animatey: "+animatey);
+                ball.setIcon(football2);
                 if (distance >0)
                 {
                     setX = (setX + animatex);
                     setY = (setY - animatey);
                     ball.setLocation((int)(setX + animatex), (int)(setY + animatey));
+                }
+            }
+            if (obj == tFlip) 
+            {
+                if (flipCount == 0)
+                {
+                    ball.setIcon(football2);
+                    flipCount = 1;
+                }
+                if (flipCount == 1)
+                {
+                    ball.setIcon(football);
+                    flipCount = 0;
                 }
             }
             
