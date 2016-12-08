@@ -69,13 +69,13 @@ public class GameController {
            // if wind
         if (wind == 2)
         {
-            x = x + (int) ((randomNum * xDir * baseWind) + (baseWind*2));   
-            y = y + (int) ((randomNum * yDir * baseWind) + (baseWind*2)); 
+            x = x + (int) ((randomNum * xDir * baseWind) + (xDir*baseWind*2));   
+            y = y + (int) ((randomNum * yDir * baseWind) + (yDir*baseWind*2)); 
         }
         if (wind == 3)
         {
-            x = x + (int) ((randomNum * xDir * 10) + (baseWind*3));
-            y = y + (int) ((randomNum * yDir * 10) + (baseWind*3));   
+            x = x + (int) ((randomNum * xDir * 10) + (xDir*baseWind*2.5));
+            y = y + (int) ((randomNum * yDir * 10) + (yDir*baseWind*2.5));   
         }        
         //sets coordinates
         int coordinates[] = {(int)x,(int)y};

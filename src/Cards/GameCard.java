@@ -410,7 +410,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                 }
                 else if (wRandom <= 3) //West
                 {
-                    wx = -1;
+                    wx = 1;
                     wy = 0;
                     wMessage.setText("West");
                     b7.setIcon(west);
