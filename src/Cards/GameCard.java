@@ -323,7 +323,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                     if (winLose == 1)
                     {
                         rMessage.setText("You Win!!");
-                        b6.setIcon(fieldgoal);
+                        //b6.setIcon(fieldgoal);
                         tAccuracy.stop();
                         tMessage.start();
                         score = (score + 1);
@@ -331,7 +331,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                     }
                     else {
                         rMessage.setText("You Lose :(");
-                        b6.setIcon(missed);
+                        //b6.setIcon(missed);
                         tMessage.start();
                     }
                     kickPoint[0] = kickPoint[0] + ((1300 - (controller.kickX))/2);
@@ -383,7 +383,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                 else if (wRandom <= 2) //South
                 {
                     wx = 0;
-                    wy = -1;
+                    wy = 1;
                     wMessage.setText("South");
                     b7.setIcon(south);
                 }
@@ -397,34 +397,34 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                 else if (wRandom <= 4)//North
                 {
                     wx = 0;
-                    wy = 1;
+                    wy = -1;
                     wMessage.setText("North");
                     b7.setIcon(north);
                 }
                 else if (wRandom <= 5) //North West
                 {
-                    wx = -1;
+                    wx = 1;
                     wy = 1;
-                    wMessage.setText("North West");
-                    b7.setIcon(northWest);
+                    wMessage.setText("South East");
+                    b7.setIcon(southEast);
                 }
                 else if (wRandom <= 6) //South West
                 {
                     wx = -1;
-                    wy = -1;
+                    wy = 1;
                     wMessage.setText("South West");
                     b7.setIcon(southWest);
                 }
                 else if (wRandom <= 7) //North East
                 {
                     wx = 1;
-                    wy = 1;
+                    wy = -1;
                     wMessage.setText("North East");
                     b7.setIcon(northEast);
                 }
                 else if (wRandom <= 8) //North West
                 {
-                    wx = 1;
+                    wx = -1;
                     wy = -1;
                     wMessage.setText("North West");
                     b7.setIcon(northWest);
@@ -454,6 +454,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                     setY = (setY - animatey);
                     ball.setLocation((int)(setX + animatex), (int)(setY + animatey));
                 }
+                System.out.println("setX: " + setX + " setY: " +setY);
             }
             if (obj == tFlip) 
             {
