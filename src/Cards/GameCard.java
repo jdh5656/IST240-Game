@@ -38,6 +38,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class GameCard extends JPanel implements ActionListener, javax.swing.event.ChangeListener {    
     
     GameController controller;
+    OptionsCard gameOpt;
     
     JTextArea pMessage = new JTextArea("Power will be displayed here");
     JTextArea aMessage = new JTextArea("Accuracy will be displayed here");
@@ -102,11 +103,12 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     ImageIcon stop = new ImageIcon("images/stop.png");
     ImageIcon gameover = new ImageIcon("images/gameover.png");
 
-    public GameCard(GameController ctrl)
+    public GameCard(GameController ctrl, OptionsCard opt)
     {
         super();
         
         controller = ctrl;
+        gameOpt = opt;
         
         setLayout(null);
         setBackground(Color.gray);
@@ -194,6 +196,11 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         b7.setBorderPainted(false);
         b7.setContentAreaFilled(false);
         b7.setIcon(north);
+        
+        //-----Options button listeners----------
+        gameOpt.jb1.addActionListener(this);
+        gameOpt.jb2.addActionListener(this);
+        gameOpt.jb3.addActionListener(this);
         
         //Football
         ball = new JButton("");
@@ -490,6 +497,42 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                     ball.setIcon(football);
                     flipCount = 0;
                 }
+            }
+            if (obj == gameOpt.jb1)
+            {
+                aDelay = 10;
+                dDelay = 10;
+                tAccuracy.stop();
+                tPower.stop();
+                tAccuracy = new Timer(aDelay, this);
+                tPower = new Timer (dDelay, this);
+                tAccuracy.start();
+                tPower.start();
+                System.out.println("aDelay: "+aDelay+" dDelay: "+dDelay);
+            }
+            if (obj == gameOpt.jb2)
+            {
+                aDelay = 6;
+                dDelay = 6;
+                tAccuracy.stop();
+                tPower.stop();
+                tAccuracy = new Timer(aDelay, this);
+                tPower = new Timer (dDelay, this);
+                tAccuracy.start();
+                tPower.start();
+                System.out.println("aDelay: "+aDelay+" dDelay: "+dDelay);
+            }
+            if (obj == gameOpt.jb3)
+            {
+                aDelay = 4;
+                dDelay = 4;
+                tAccuracy.stop();
+                tPower.stop();
+                tAccuracy = new Timer(aDelay, this);
+                tPower = new Timer (dDelay, this);
+                tAccuracy.start();
+                tPower.start();
+                System.out.println("aDelay: "+aDelay+" dDelay: "+dDelay);
             }
             
             repaint();

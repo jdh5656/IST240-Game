@@ -23,7 +23,6 @@ public class GameController {
     public int winXMin = 85; //in pixels
     public int winYMax = 300; //in pixels
     public int winYMin = 100; //in pixels
-    public int diff = 1;
     public int wind = 1;
     public int dist = 1;
            
