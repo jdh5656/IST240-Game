@@ -84,9 +84,9 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     int keyCounter = 0;
     int score = 0;
     long startTime = -1;
-    long duration = 10000;
+    long duration = 30*1000;
     Player[] play;
-    Player tempPlay;
+    Player tempPlay[];
     int pnum=0;
     int tempScore = 0;
     
@@ -125,11 +125,14 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         
         //------Player setup ----------
         play = new Player[3];
-        play[0] = new Player("Player 1", 0);
+        play[pnum] = new Player("Player 1", 0);
         play[1] = new Player("Player 2", 0);
         play[2] = new Player("Player 3", 0);
         play[pnum].setName("Player"+" "+ (pnum+1));
-        tempPlay = new Player("new",tempScore);
+        tempPlay = new Player[3];
+        tempPlay[0] = new Player(" ", 0);
+        tempPlay[1] = new Player(" ", 0);
+        tempPlay[2] = new Player(" ", 0);
         
         //------SLIDER TIMER -------------------------------------------
   	aDelay = 10; //milliseconds
@@ -178,18 +181,21 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                         tAccuracy.stop();
                         keyCounter = 0;
                         b2.setVisible(false);
-                        //---------XML stuff for leader board-------------
-                        play[pnum].pScore = score;
+                        //---------XML stuff for leader board-------------                        
                         xmlGame.openReaderXML("test.xml");
-                        tempPlay = (Player)xmlGame.ReadObject();
-                        tempScore = tempPlay.pScore;
+                        play[0] = (Player)xmlGame.ReadObject();
+                        play[1] = (Player)xmlGame.ReadObject();
+                        play[2] = (Player)xmlGame.ReadObject();
                         xmlGame.closeReaderXML();
-                        System.out.println("score"+score+" tempScore: "+tempScore);
-                        if (score > tempScore)
+                        tempScore = play[pnum].pScore;
+                        if (tempScore < score)
                         {
-                        xmlGame.openWriterXML("test.xml");
-                        xmlGame.writeObject(play[pnum]);
-                        xmlGame.closeWriterXML();
+                            play[pnum].pScore = score;
+                            xmlGame.openWriterXML("test.xml");
+                            xmlGame.writeObject(play[0]);
+                            xmlGame.writeObject(play[1]);
+                            xmlGame.writeObject(play[2]);
+                            xmlGame.closeWriterXML();         
                         }
                         lb.updateBoard();
                     }

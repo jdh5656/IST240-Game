@@ -7,7 +7,7 @@
      <string>x</string>
      <void method="set">
       <object idref="Rectangle0"/>
-      <int>750</int>
+      <int>350</int>
      </void>
     </void>
     <void class="java.awt.Rectangle" method="getField">
@@ -37,7 +37,7 @@
    <string>name</string>
    <void method="set">
     <object idref="Player0"/>
-    <string>Player 3</string>
+    <string>Player 1</string>
    </void>
   </void>
   <void class="Game.Player" method="getField">
@@ -45,6 +45,124 @@
    <void method="set">
     <object idref="Player0"/>
     <int>3</int>
+   </void>
+  </void>
+  <void property="actionCommand">
+   <string>Player 1</string>
+  </void>
+  <void property="label">
+   <string>Player 1</string>
+  </void>
+  <void property="model">
+   <void property="actionCommand">
+    <null/>
+   </void>
+  </void>
+ </object>
+ <object class="Game.Player" id="Player1">
+  <void property="bounds">
+   <object class="java.awt.Rectangle" id="Rectangle1">
+    <void class="java.awt.Rectangle" method="getField">
+     <string>x</string>
+     <void method="set">
+      <object idref="Rectangle1"/>
+      <int>550</int>
+     </void>
+    </void>
+    <void class="java.awt.Rectangle" method="getField">
+     <string>y</string>
+     <void method="set">
+      <object idref="Rectangle1"/>
+      <int>150</int>
+     </void>
+    </void>
+    <void class="java.awt.Rectangle" method="getField">
+     <string>width</string>
+     <void method="set">
+      <object idref="Rectangle1"/>
+      <int>200</int>
+     </void>
+    </void>
+    <void class="java.awt.Rectangle" method="getField">
+     <string>height</string>
+     <void method="set">
+      <object idref="Rectangle1"/>
+      <int>50</int>
+     </void>
+    </void>
+   </object>
+  </void>
+  <void class="Game.Player" method="getField">
+   <string>name</string>
+   <void method="set">
+    <object idref="Player1"/>
+    <string>Player 2</string>
+   </void>
+  </void>
+  <void class="Game.Player" method="getField">
+   <string>pScore</string>
+   <void method="set">
+    <object idref="Player1"/>
+    <int>4</int>
+   </void>
+  </void>
+  <void property="actionCommand">
+   <string>Player 2</string>
+  </void>
+  <void property="label">
+   <string>Player 2</string>
+  </void>
+  <void property="model">
+   <void property="actionCommand">
+    <null/>
+   </void>
+  </void>
+ </object>
+ <object class="Game.Player" id="Player2">
+  <void property="bounds">
+   <object class="java.awt.Rectangle" id="Rectangle2">
+    <void class="java.awt.Rectangle" method="getField">
+     <string>x</string>
+     <void method="set">
+      <object idref="Rectangle2"/>
+      <int>750</int>
+     </void>
+    </void>
+    <void class="java.awt.Rectangle" method="getField">
+     <string>y</string>
+     <void method="set">
+      <object idref="Rectangle2"/>
+      <int>150</int>
+     </void>
+    </void>
+    <void class="java.awt.Rectangle" method="getField">
+     <string>width</string>
+     <void method="set">
+      <object idref="Rectangle2"/>
+      <int>200</int>
+     </void>
+    </void>
+    <void class="java.awt.Rectangle" method="getField">
+     <string>height</string>
+     <void method="set">
+      <object idref="Rectangle2"/>
+      <int>50</int>
+     </void>
+    </void>
+   </object>
+  </void>
+  <void class="Game.Player" method="getField">
+   <string>name</string>
+   <void method="set">
+    <object idref="Player2"/>
+    <string>Player 3</string>
+   </void>
+  </void>
+  <void class="Game.Player" method="getField">
+   <string>pScore</string>
+   <void method="set">
+    <object idref="Player2"/>
+    <int>0</int>
    </void>
   </void>
   <void property="actionCommand">
