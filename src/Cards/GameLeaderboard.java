@@ -25,9 +25,20 @@ public class GameLeaderboard extends JPanel {
         super();
         xmlLeader = xL;
         thePlayer = new Player[3];
-        thePlayer[0] = new Player(" ",0);
-        thePlayer[1] = new Player(" ",0);
-        thePlayer[2] = new Player(" ",0);
+        xmlLeader.openReaderXML("test.xml");
+        thePlayer[0] = (Player)xmlLeader.ReadObject();
+        thePlayer[1] = (Player)xmlLeader.ReadObject();
+        thePlayer[2] = (Player)xmlLeader.ReadObject();
+        xmlLeader.closeReaderXML();
+        
+        //-------SET BUTTONS
+        thePlayer[0].setBounds(350, 150, 200, 50);
+        thePlayer[1].setBounds(350, 150, 200, 50);
+        thePlayer[2].setBounds(350, 150, 200, 50);
+        //-------ADD BUTTONS
+        add(thePlayer[0]);
+        add(thePlayer[1]);
+        add(thePlayer[2]);
     }
     public void updateBoard() 
     {
