@@ -71,7 +71,7 @@ public class IntroCard extends JPanel implements ActionListener, javax.swing.eve
             }
             if (obj == gameIntro.play[0])
             {
-                gameIntro.pnum = 1;
+                gameIntro.pnum = 0;
                 gameIntro.play[0].setVisible(false);
                 gameIntro.play[1].setVisible(false);
                 gameIntro.play[2].setVisible(false);

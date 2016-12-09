@@ -85,8 +85,10 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     int score = 0;
     long startTime = -1;
     long duration = 10000;
-    Player[] play ;
+    Player[] play;
+    Player tempPlay;
     int pnum=0;
+    int tempScore = 0;
     
 
 
@@ -126,6 +128,8 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         play[0] = new Player("Player 1", 0);
         play[1] = new Player("Player 2", 0);
         play[2] = new Player("Player 3", 0);
+        play[pnum].setName("Player"+" "+ (pnum+1));
+        tempPlay = new Player("new",tempScore);
         
         //------SLIDER TIMER -------------------------------------------
   	aDelay = 10; //milliseconds
@@ -174,11 +178,19 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                         tAccuracy.stop();
                         keyCounter = 0;
                         b2.setVisible(false);
-                        play[pnum].setName("Player"+" "+ (pnum+1));
-                        play[pnum].setpScore(score);
+                        //---------XML stuff for leader board-------------
+                        play[pnum].pScore = score;
+                        xmlGame.openReaderXML("test.xml");
+                        tempPlay = (Player)xmlGame.ReadObject();
+                        tempScore = tempPlay.pScore;
+                        xmlGame.closeReaderXML();
+                        System.out.println("score"+score+" tempScore: "+tempScore);
+                        if (score > tempScore)
+                        {
                         xmlGame.openWriterXML("test.xml");
                         xmlGame.writeObject(play[pnum]);
                         xmlGame.closeWriterXML();
+                        }
                         lb.updateBoard();
                     }
                     SimpleDateFormat df = new SimpleDateFormat("ss:S");
