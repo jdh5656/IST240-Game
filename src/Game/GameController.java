@@ -59,7 +59,6 @@ public class GameController {
         
             
         //Adjusts x based on wind direction and degree of adjustment
-        System.out.println("x: " + (x+300) + " y: "+ (y+400));
         if (wind == 1)
         {
             x = x + (randomNum * xDir * baseWind);
@@ -83,14 +82,10 @@ public class GameController {
     
     public int evaluateGoal(int coordinates[]) {
         int goal = 0; //1 for win 0 for lose
-        //if distance = 1, 2, 3 boundingbox = ?
-        System.out.println("x coord: "+ coordinates[0] + " winXMin: " + winXMin);
-        System.out.println("y coord: "+ coordinates[1] + " winYMin: " + winYMin);
         if (dist == 1)
         {
             if (coordinates[0] >= winXMin && coordinates[0] <= winXMax && coordinates[1] >= winYMin) 
             {            
-                System.out.println("test");
                 goal = 1;
             }
             else {

@@ -5,16 +5,17 @@
         <group>
             <file>file:/C:/Users/John/Documents/NetBeansProjects/gamredux2/IST240-Game/src/GameCardsJPanel.java</file>
             <file>file:/C:/Users/John/Documents/NetBeansProjects/gamredux2/IST240-Game/src/Cards/InstructionsCard.java</file>
-            <file>file:/C:/Users/John/Documents/NetBeansProjects/gamredux2/IST240-Game/src/Cards/DesignersCard.java</file>
             <file>file:/C:/Users/John/Documents/NetBeansProjects/gamredux2/IST240-Game/src/GameJFrame.java</file>
-            <file>file:/C:/Users/John/Documents/NetBeansProjects/gamredux2/IST240-Game/src/Cards/GameCard.java</file>
+            <file>file:/C:/Users/John/Documents/NetBeansProjects/gamredux2/IST240-Game/src/Cards/DesignersCard.java</file>
             <file>file:/C:/Users/John/Documents/NetBeansProjects/gamredux2/IST240-Game/src/Cards/IntroCard.java</file>
-            <file>file:/C:/Users/John/Documents/NetBeansProjects/gamredux2/IST240-Game/src/Game/XML_240.java</file>
             <file>file:/C:/Users/John/Documents/NetBeansProjects/gamredux2/IST240-Game/src/GameNavigationJPanel.java</file>
-            <file>file:/C:/Users/John/Documents/NetBeansProjects/gamredux2/IST240-Game/src/Game/GameOptions.java</file>
             <file>file:/C:/Users/John/Documents/NetBeansProjects/gamredux2/IST240-Game/src/Game/Player.java</file>
             <file>file:/C:/Users/John/Documents/NetBeansProjects/gamredux2/IST240-Game/src/Cards/GameLeaderboard.java</file>
             <file>file:/C:/Users/John/Documents/NetBeansProjects/gamredux2/IST240-Game/src/GameJPanel.java</file>
+            <file>file:/C:/Users/John/Documents/NetBeansProjects/gamredux2/IST240-Game/src/Cards/GameCard.java</file>
+            <file>file:/C:/Users/John/Documents/NetBeansProjects/gamredux2/IST240-Game/src/Game/GameOptions.java</file>
+            <file>file:/C:/Users/John/Documents/NetBeansProjects/gamredux2/IST240-Game/src/Game/XML_240.java</file>
+            <file>file:/C:/Users/John/Documents/NetBeansProjects/gamredux2/IST240-Game/src/Cards/OptionsCard.java</file>
             <file>file:/C:/Users/John/Documents/NetBeansProjects/gamredux2/IST240-Game/src/Game/GameController.java</file>
         </group>
     </open-files>

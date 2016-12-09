@@ -162,7 +162,7 @@
    <string>pScore</string>
    <void method="set">
     <object idref="Player2"/>
-    <int>0</int>
+    <int>9</int>
    </void>
   </void>
   <void property="actionCommand">

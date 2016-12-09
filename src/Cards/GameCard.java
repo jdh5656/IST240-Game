@@ -434,7 +434,6 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                     }
                     kickPoint[0] = kickPoint[0] + ((1300 - (controller.kickX))/2);
                     kickPoint[1] = kickPoint[1] + (800 - controller.kickY);
-                    System.out.println(kickPoint[0]+","+kickPoint[1]+" "+winLose);
                     tBall.start();
                     tFlip.start();
                     
