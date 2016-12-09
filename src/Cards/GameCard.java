@@ -38,7 +38,11 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class GameCard extends JPanel implements ActionListener, javax.swing.event.ChangeListener {    
     
     GameController controller;
+<<<<<<< HEAD
     TopScore tScore;
+=======
+    OptionsCard gameOpt;
+>>>>>>> origin/master
     
     JTextArea pMessage = new JTextArea("Power will be displayed here");
     JTextArea aMessage = new JTextArea("Accuracy will be displayed here");
@@ -49,7 +53,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     JLabel showFinalScore = new JLabel(" ");
     JSlider accuracy, power;
     JButton b1, b2, b5, b6,b7,ball,jbGameOver;
-    JLabel l1, l2,countMessage;
+    JLabel l1, l2, l3,countMessage;
     JLabel showScore = new JLabel(" ");
     Timer tAccuracy;
     Timer tPower;
@@ -104,15 +108,23 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     ImageIcon stop = new ImageIcon("images/stop.png");
     ImageIcon gameover = new ImageIcon("images/gameover.png");
 
+<<<<<<< HEAD
     public GameCard(GameController ctrl //*TopScore topScore
             
     )
             
+=======
+    public GameCard(GameController ctrl, OptionsCard opt)
+>>>>>>> origin/master
     {
         super();
         
         controller = ctrl;
+<<<<<<< HEAD
        // tScore = topScore;
+=======
+        gameOpt = opt;
+>>>>>>> origin/master
         
         setLayout(null);
         setBackground(Color.gray);
@@ -203,6 +215,15 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         b7.setContentAreaFilled(false);
         b7.setIcon(north);
         
+        //-----Options button listeners----------
+        gameOpt.jb1.addActionListener(this);
+        gameOpt.jb2.addActionListener(this);
+        gameOpt.jb3.addActionListener(this);
+        gameOpt.jb7.addActionListener(this);
+        gameOpt.jb8.addActionListener(this);
+        gameOpt.jb9.addActionListener(this);
+        
+        
         //Football
         ball = new JButton("");
         ball.addActionListener(this);
@@ -259,8 +280,14 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         
         
         //Create Graphics
-        ImageIcon gBackground = new ImageIcon ("images/gameMain.png");
-        l2 = new JLabel(gBackground);
+        ImageIcon gameFar = new ImageIcon ("images/gameFar.png");
+        ImageIcon gameAverage = new ImageIcon ("images/gameAverage.png");
+        ImageIcon gameClose = new ImageIcon ("images/gameClose.png");
+        l1 = new JLabel(gameClose);
+        l2 = new JLabel (gameAverage);
+        l3 = new JLabel (gameFar);
+        l2.setVisible(false);
+        l3.setVisible(false);
         
 
             
@@ -287,7 +314,9 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         add(countMessage);
         add(gameStatus);
         add(jbGameOver);
+        add(l1);
         add(l2);
+        add(l3);
         
         
     
@@ -306,7 +335,9 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         wMessage.setBounds(new Rectangle(1000,230,200,20));
         rMessage.setBounds(new Rectangle(1000,500,200,20));
         scoreMessage.setBounds(new Rectangle(10,500,200,20));
+        l1.setBounds(0, 0, 1300, 800);
         l2.setBounds(0, 0, 1300, 800);
+        l3.setBounds(0, 0, 1300, 800);
         controller.optionsDifficulty.setBounds(new Rectangle(10,580,200,20));
         controller.optionsWind.setBounds(new Rectangle(10,620,200,20));
         controller.optionsDistance.setBounds(new Rectangle(10,660,200,20));
@@ -427,7 +458,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                 }
                 else if (wRandom <= 3) //West
                 {
-                    wx = -1;
+                    wx = 1;
                     wy = 0;
                     wMessage.setText("West");
                     b7.setIcon(west);
@@ -507,6 +538,61 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                     ball.setIcon(football);
                     flipCount = 0;
                 }
+            }
+            if (obj == gameOpt.jb1)
+            {
+                //reset timers
+                aDelay = 10;
+                dDelay = 10;
+                tAccuracy.stop();
+                tPower.stop();
+                tAccuracy = new Timer(aDelay, this);
+                tPower = new Timer (dDelay, this);
+                tAccuracy.start();
+                tPower.start();
+                System.out.println("aDelay: "+aDelay+" dDelay: "+dDelay);
+            }
+            if (obj == gameOpt.jb2)
+            {
+                //reset timers
+                aDelay = 6;
+                dDelay = 6;
+                tAccuracy.stop();
+                tPower.stop();
+                tAccuracy = new Timer(aDelay, this);
+                tPower = new Timer (dDelay, this);
+                tAccuracy.start();
+                tPower.start();
+            }
+            if (obj == gameOpt.jb3)
+            {
+                //reset timers
+                aDelay = 4;
+                dDelay = 4;
+                tAccuracy.stop();
+                tPower.stop();
+                tAccuracy = new Timer(aDelay, this);
+                tPower = new Timer (dDelay, this);
+                tAccuracy.start();
+                tPower.start();
+            }
+            if (obj == gameOpt.jb7)
+            {
+                l1.setVisible(true);
+                l2.setVisible(false);
+                l3.setVisible(false);
+            }
+            if (obj == gameOpt.jb8)
+            {
+                l1.setVisible(false);
+                l2.setVisible(true);
+                l3.setVisible(false);
+            }
+            if (obj == gameOpt.jb9) 
+            {
+                l1.setVisible(false);
+                l2.setVisible(false);
+                l3.setVisible(true);
             }
             
             repaint();
