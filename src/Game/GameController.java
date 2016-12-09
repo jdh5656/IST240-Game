@@ -17,16 +17,12 @@ public class GameController {
     public JTextArea optionsDifficulty;
     public JTextArea optionsWind;
     public JTextArea optionsDistance;
-    public int kickX = 700; //in pixels, width
-    public int kickY = 400; //in pixels, height
-    public int winXMax = 615; //in pixels
-    public int winXMin = 85; //in pixels
-    public int winYMax = 300; //in pixels
-    public int winYMin = 100; //in pixels
-    public int diff = 1;
-    public int wind = 1;
-    public int dist = 1;
-           
+    public int kickX = 530; //in pixels, width
+    public int kickY = 300; //in pixels, height
+    public int winXMax = 415; //in pixels
+    public int winXMin = 115; //in pixels
+    public int winYMax = 250; //in pixels
+    public int winYMin = 50; //in pixels
     
     
     
@@ -45,7 +41,7 @@ public class GameController {
         double x = 0;
         double y = 0;
         double randomNum = Math.random();
-        double baseWind = 30;
+        double baseWind = 10;
         //if power
         // Calculates x and y values BEFORE wind factor
         if (pow >= 0 && pow <= 100) 
@@ -60,36 +56,37 @@ public class GameController {
         
             
         //Adjusts x based on wind direction and degree of adjustment
-        System.out.println("x: " + (x+300) + " y: "+ (y+400));
-        if (wind == 1)
+        if (options.wind == "Slight")
         {
             x = x + (randomNum * xDir * baseWind);
             y = y + (randomNum * yDir * baseWind);
         }
            // if wind
-        if (wind == 2)
+        if (options.wind == "Moderate")
         {
-            x = x + (int) ((randomNum * xDir * baseWind) + (baseWind*2));   
-            y = y + (int) ((randomNum * yDir * baseWind) + (baseWind*2)); 
+            x = x + (int) ((randomNum * xDir * baseWind) + baseWind);   
+            y = y + (int) ((randomNum * yDir * baseWind) + baseWind); 
         }
-        if (wind == 3)
+        if (options.wind == "Heavy")
         {
-            x = x + (int) ((randomNum * xDir * 10) + (baseWind*3));
-            y = y + (int) ((randomNum * yDir * 10) + (baseWind*3));   
-        }        
+            x = x + (int) ((randomNum * xDir * 10) + (baseWind+5));
+            y = y + (int) ((randomNum * yDir * 10) + (baseWind+5));
+            
+        }
+        
         //sets coordinates
         int coordinates[] = {(int)x,(int)y};
         return coordinates;
+        
     }
     
     public int evaluateGoal(int coordinates[]) {
         int goal = 0; //1 for win 0 for lose
         //if distance = 1, 2, 3 boundingbox = ?
-        System.out.println("x coord: "+ coordinates[0] + " winXMin: " + winXMin);
-        System.out.println("y coord: "+ coordinates[1] + " winYMin: " + winYMin);
-        if (dist == 1)
+        System.out.println(coordinates[0] + ", " +coordinates[1]);
+        if (options.distance == "Close")
         {
-            if (coordinates[0] >= winXMin && coordinates[0] <= winXMax && coordinates[1] >= winYMin) 
+            if (coordinates[0] >= winXMin && coordinates[0] <= winXMax && coordinates[1] >= winYMin && coordinates[1] <= winYMax) 
             {            
                 System.out.println("test");
                 goal = 1;
@@ -98,9 +95,9 @@ public class GameController {
                 goal = 0;
             }     
         }
-        if (dist == 2)
+        if (options.distance == "Average")
         {
-            if (coordinates[0] >= winXMin && coordinates[0] <= winXMax && coordinates[1] >= winYMin)
+            if (coordinates[0] >= winXMin && coordinates[0] <= winXMax && coordinates[1] >= winYMin && coordinates[1] <= winYMin)
             {
                 goal = 1;
             }
@@ -109,9 +106,9 @@ public class GameController {
             }
             
         }
-        if (dist == 3)
+        if (options.distance == "NFL Record")
         {
-            if (coordinates[0] >= winXMin && coordinates[0] <= winXMax && coordinates[1] >= winYMin)
+            if (coordinates[0] >= winXMin && coordinates[0] <= winXMax && coordinates[1] >= winYMin && coordinates[1] <= winYMin)
             {
                 goal = 1;
             }
