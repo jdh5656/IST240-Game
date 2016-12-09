@@ -95,37 +95,27 @@ public class OptionsCard extends JPanel implements ActionListener
         //--------Difficulty--------------
         
         if(obj == jb1){
-            controller.options.difficulty = "Practice";
+
             jb1.setBackground(Color.BLUE);
             jb2.setBackground(Color.GRAY);
             jb3.setBackground(Color.GRAY);
         }
-        
         if(obj == jb2){
-            controller.options.difficulty = "Game Day";
+
             jb1.setBackground(Color.GRAY);
             jb2.setBackground(Color.BLUE);
             jb3.setBackground(Color.GRAY);
         }
-        
         if(obj == jb3){
-            controller.options.difficulty = "Championship";
+
             jb1.setBackground(Color.GRAY);
             jb2.setBackground(Color.GRAY);
             jb3.setBackground(Color.BLUE);
         }
         
-        //--------Wind--------------
-        
-        if(obj == jb4){
-            controller.options.wind = "Slight";
-            jb4.setBackground(Color.BLUE);
-            jb5.setBackground(Color.GRAY);
-            jb6.setBackground(Color.GRAY);
-        }
-        
         if(obj == jb5){
             controller.options.wind = "Moderate";
+            controller.wind = 2;
             jb4.setBackground(Color.GRAY);
             jb5.setBackground(Color.BLUE);
             jb6.setBackground(Color.GRAY);
@@ -133,6 +123,32 @@ public class OptionsCard extends JPanel implements ActionListener
         
         if(obj == jb6){
             controller.options.wind = "Heavy";
+            controller.wind = 3;
+            jb4.setBackground(Color.GRAY);
+            jb5.setBackground(Color.GRAY);
+            jb6.setBackground(Color.BLUE);
+        }
+        //-------------------Wind--------------
+        
+        if(obj == jb4){
+            controller.options.wind = "Slight";
+            controller.wind = 1;
+            jb4.setBackground(Color.BLUE);
+            jb5.setBackground(Color.GRAY);
+            jb6.setBackground(Color.GRAY);
+        }
+        
+        if(obj == jb5){
+            controller.options.wind = "Moderate";
+            controller.wind = 2;
+            jb4.setBackground(Color.GRAY);
+            jb5.setBackground(Color.BLUE);
+            jb6.setBackground(Color.GRAY);
+        }
+        
+        if(obj == jb6){
+            controller.options.wind = "Heavy";
+            controller.wind = 3;
             jb4.setBackground(Color.GRAY);
             jb5.setBackground(Color.GRAY);
             jb6.setBackground(Color.BLUE);
@@ -142,35 +158,38 @@ public class OptionsCard extends JPanel implements ActionListener
         
         if(obj == jb7){
             controller.options.distance = "Close";
+            controller.dist = 1;
             jb7.setBackground(Color.BLUE);
             jb8.setBackground(Color.GRAY);
             jb9.setBackground(Color.GRAY);
-            controller.winXMax = 415;
-            controller.winYMax = 250;
-            controller.winXMin = 115;
-            controller.winYMin = 50;
+            controller.winXMax = 600;
+            controller.winYMax = 300;
+            controller.winXMin = 100;
+            controller.winYMin = 100;
         }
         
         if(obj == jb8){
             controller.options.distance = "Average";
+            controller.dist = 2;
             jb7.setBackground(Color.GRAY);
             jb8.setBackground(Color.BLUE);
             jb9.setBackground(Color.GRAY);
-//            controller.winXMax = 350;
-//            controller.winYMax = 225;
-//            controller.winXMin = 0;
-//            controller.winYMin = 0;
+            controller.winXMax = 560;
+            controller.winYMax = 250;
+            controller.winXMin = 140;
+            controller.winYMin = 150;
         }
         
         if(obj == jb9){
             jb7.setBackground(Color.GRAY);
             jb8.setBackground(Color.GRAY);
             jb9.setBackground(Color.BLUE);
-//            controller.options.distance = "NFL Record";
-//            controller.winXMax = 300;
-//            controller.winYMax = 200;
-//            controller.winXMin = 0;
-//            controller.winYMin = 0;
+            controller.options.distance = "NFL Record";
+            controller.dist = 3;
+            controller.winXMax = 500;
+            controller.winYMax = 200;
+            controller.winXMin = 200;
+            controller.winYMin = 200;
         }
         
         controller.optionsDifficulty.setText("Game Type: "+controller.options.difficulty);
