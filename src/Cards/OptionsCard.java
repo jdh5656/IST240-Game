@@ -95,30 +95,40 @@ public class OptionsCard extends JPanel implements ActionListener
         //--------Difficulty--------------
         
         if(obj == jb1){
-            controller.options.difficulty = "Practice";
-            controller.diff = 1;
+
             jb1.setBackground(Color.BLUE);
             jb2.setBackground(Color.GRAY);
             jb3.setBackground(Color.GRAY);
         }
-        
         if(obj == jb2){
-            controller.options.difficulty = "Game Day";
-            controller.diff = 2;
+
             jb1.setBackground(Color.GRAY);
             jb2.setBackground(Color.BLUE);
             jb3.setBackground(Color.GRAY);
         }
-        
         if(obj == jb3){
-            controller.options.difficulty = "Championship";
-            controller.diff = 3;
+
             jb1.setBackground(Color.GRAY);
             jb2.setBackground(Color.GRAY);
             jb3.setBackground(Color.BLUE);
         }
         
-        //--------Wind--------------
+        if(obj == jb5){
+            controller.options.wind = "Moderate";
+            controller.wind = 2;
+            jb4.setBackground(Color.GRAY);
+            jb5.setBackground(Color.BLUE);
+            jb6.setBackground(Color.GRAY);
+        }
+        
+        if(obj == jb6){
+            controller.options.wind = "Heavy";
+            controller.wind = 3;
+            jb4.setBackground(Color.GRAY);
+            jb5.setBackground(Color.GRAY);
+            jb6.setBackground(Color.BLUE);
+        }
+        //-------------------Wind--------------
         
         if(obj == jb4){
             controller.options.wind = "Slight";

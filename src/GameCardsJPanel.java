@@ -45,10 +45,10 @@ public class GameCardsJPanel extends JPanel
         GameController controller = new GameController();
         
         //Create Panels
+        options = new OptionsCard(controller);
         intro = new IntroCard();
         instructions = new InstructionsCard();
-        game = new GameCard(controller);
-        options = new OptionsCard(controller);
+        game = new GameCard(controller, options);
         designers = new DesignersCard();
        
         add(intro, CINTRO);

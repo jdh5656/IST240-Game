@@ -1,2 +1,4 @@
 /dist/
 *.class
+
+src/Cards/GameCard.java
