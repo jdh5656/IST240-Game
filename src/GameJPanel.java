@@ -49,6 +49,7 @@ public class GameJPanel extends JPanel implements ActionListener
         navigationJPanel.jbGame.addActionListener(this);
         navigationJPanel.jbOptions.addActionListener(this);
         gameCards.intro.b1.addActionListener(this);
+        navigationJPanel.jbLeaderboard.addActionListener(this);
         
     }
 
@@ -69,6 +70,8 @@ public class GameJPanel extends JPanel implements ActionListener
             gameCards.cards.show(gameCards, "Options");
         } else if (obj == gameCards.intro.b1) {
             gameCards.cards.show(gameCards, "Game");
+        } else if (obj == navigationJPanel.jbLeaderboard) {
+            gameCards.cards.show(gameCards, "Leaderboard");
         }
     }
     

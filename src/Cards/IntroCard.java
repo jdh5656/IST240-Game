@@ -20,21 +20,23 @@ public class IntroCard extends JPanel implements ActionListener, javax.swing.eve
     {
         super();
         
-        GridLayout grid = new GridLayout(6,1);
-        setLayout(grid);
-        setBackground(Color.orange);
+        //GridLayout grid = new GridLayout(6,1);
+        setLayout(null);
+        setBackground(Color.WHITE);
                 
         //Create JLabels
-        JLabel l1 = new JLabel("Welcome to our Game");
-        l1.setHorizontalAlignment(JLabel.CENTER);
+        ImageIcon introGraphic = new ImageIcon("images/intro.png");
+        JLabel l1 = new JLabel(introGraphic);
+        l1.setBounds(0, 0, 1300, 800);
         
         //Create JButtons
         b1 = new JButton("Start");
+        b1.setBounds(500, 150, 300, 50);
         b1.setHorizontalAlignment(JButton.CENTER);
         
         //Add Components
-        add(l1);
         add(b1);
+        add(l1);
         
         // Add leaderboard
     }
