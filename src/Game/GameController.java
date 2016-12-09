@@ -17,24 +17,12 @@ public class GameController {
     public JTextArea optionsDifficulty;
     public JTextArea optionsWind;
     public JTextArea optionsDistance;
-<<<<<<< HEAD
     public int kickX = 530; //in pixels, width
     public int kickY = 300; //in pixels, height
     public int winXMax = 415; //in pixels
     public int winXMin = 115; //in pixels
     public int winYMax = 250; //in pixels
     public int winYMin = 50; //in pixels
-=======
-    public int kickX = 700; //in pixels, width
-    public int kickY = 400; //in pixels, height
-    public int winXMax = 615; //in pixels
-    public int winXMin = 85; //in pixels
-    public int winYMax = 300; //in pixels
-    public int winYMin = 100; //in pixels
-    public int wind = 1;
-    public int dist = 1;
-           
->>>>>>> parent of 71a01c0... Revert "Merge remote-tracking branch 'origin/master'"
     
     
     
@@ -76,27 +64,16 @@ public class GameController {
            // if wind
         if (options.wind == "Moderate")
         {
-<<<<<<< HEAD
             x = x + (int) ((randomNum * xDir * baseWind) + baseWind);   
             y = y + (int) ((randomNum * yDir * baseWind) + baseWind); 
-=======
-            x = x + (int) ((randomNum * xDir * baseWind) + (xDir*baseWind*2));   
-            y = y + (int) ((randomNum * yDir * baseWind) + (yDir*baseWind*2)); 
->>>>>>> parent of 71a01c0... Revert "Merge remote-tracking branch 'origin/master'"
         }
         if (options.wind == "Heavy")
         {
-<<<<<<< HEAD
             x = x + (int) ((randomNum * xDir * 10) + (baseWind+5));
             y = y + (int) ((randomNum * yDir * 10) + (baseWind+5));
             
         }
         
-=======
-            x = x + (int) ((randomNum * xDir * 10) + (xDir*baseWind*2.5));
-            y = y + (int) ((randomNum * yDir * 10) + (yDir*baseWind*2.5));   
-        }        
->>>>>>> parent of 71a01c0... Revert "Merge remote-tracking branch 'origin/master'"
         //sets coordinates
         int coordinates[] = {(int)x,(int)y};
         return coordinates;

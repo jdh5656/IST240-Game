@@ -95,52 +95,27 @@ public class OptionsCard extends JPanel implements ActionListener
         //--------Difficulty--------------
         
         if(obj == jb1){
-<<<<<<< HEAD
             controller.options.difficulty = "Practice";
-=======
-
->>>>>>> parent of 71a01c0... Revert "Merge remote-tracking branch 'origin/master'"
             jb1.setBackground(Color.BLUE);
             jb2.setBackground(Color.GRAY);
             jb3.setBackground(Color.GRAY);
         }
+        
         if(obj == jb2){
-<<<<<<< HEAD
             controller.options.difficulty = "Game Day";
-=======
-
->>>>>>> parent of 71a01c0... Revert "Merge remote-tracking branch 'origin/master'"
             jb1.setBackground(Color.GRAY);
             jb2.setBackground(Color.BLUE);
             jb3.setBackground(Color.GRAY);
         }
+        
         if(obj == jb3){
-<<<<<<< HEAD
             controller.options.difficulty = "Championship";
-=======
-
->>>>>>> parent of 71a01c0... Revert "Merge remote-tracking branch 'origin/master'"
             jb1.setBackground(Color.GRAY);
             jb2.setBackground(Color.GRAY);
             jb3.setBackground(Color.BLUE);
         }
         
-        if(obj == jb5){
-            controller.options.wind = "Moderate";
-            controller.wind = 2;
-            jb4.setBackground(Color.GRAY);
-            jb5.setBackground(Color.BLUE);
-            jb6.setBackground(Color.GRAY);
-        }
-        
-        if(obj == jb6){
-            controller.options.wind = "Heavy";
-            controller.wind = 3;
-            jb4.setBackground(Color.GRAY);
-            jb5.setBackground(Color.GRAY);
-            jb6.setBackground(Color.BLUE);
-        }
-        //-------------------Wind--------------
+        //--------Wind--------------
         
         if(obj == jb4){
             controller.options.wind = "Slight";
