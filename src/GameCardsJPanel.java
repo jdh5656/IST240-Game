@@ -41,17 +41,19 @@ public class GameCardsJPanel extends JPanel
         cards = new CardLayout();
         setLayout(cards);
         setPreferredSize(new Dimension(1300,700));
+        x2 = new XML_240();
         
         //Create Controller
         GameController controller = new GameController();
         
         //Create Panels
         options = new OptionsCard(controller);
-        intro = new IntroCard();
-        instructions = new InstructionsCard();
-        game = new GameCard(controller, options, x2);
+        leaderboard = new GameLeaderboard(x2);
+        game = new GameCard(controller, options, x2, leaderboard);
         designers = new DesignersCard();
-        leaderboard = new GameLeaderboard(game, x2);
+        intro = new IntroCard(game);
+        instructions = new InstructionsCard();
+        
        
         add(intro, CINTRO);
         add(instructions, CINSTRUCTIONS);

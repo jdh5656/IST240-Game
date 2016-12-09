@@ -18,12 +18,9 @@ public class InstructionsCard extends JPanel {
         setBackground(Color.yellow);
         
         //Create JLabels
-        JLabel l1 = new JLabel("Instructions");
-        l1.setHorizontalAlignment(JLabel.CENTER);        
+       
         
         //Add Components
-        add(l1);
-    }
 
-    
+    }
 }

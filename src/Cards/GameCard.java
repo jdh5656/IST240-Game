@@ -41,6 +41,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     GameController controller;
     OptionsCard gameOpt;
     XML_240 xmlGame;
+    GameLeaderboard lb;
     
     JTextArea pMessage = new JTextArea("Power will be displayed here");
     JTextArea aMessage = new JTextArea("Accuracy will be displayed here");
@@ -84,7 +85,9 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     int score = 0;
     long startTime = -1;
     long duration = 10000;
-    Player p1, p2, p3;
+    Player[] play ;
+    int pnum=0;
+    
 
 
     ImageIcon north = new ImageIcon("images/north.png");
@@ -106,16 +109,23 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     ImageIcon accu = new ImageIcon ("images/acc.png");
     ImageIcon pow = new ImageIcon ("images/pow.png");
 
-    public GameCard(GameController ctrl, OptionsCard opt, XML_240 xG)
+    public GameCard(GameController ctrl, OptionsCard opt, XML_240 xG, GameLeaderboard glead)
     {
         super();
         
         controller = ctrl;
         gameOpt = opt;
         xmlGame = xG;
+        lb = glead;
         
         setLayout(null);
         setBackground(Color.gray);
+        
+        //------Player setup ----------
+        play = new Player[3];
+        play[0] = new Player("Player 1", 0);
+        play[1] = new Player("Player 2", 0);
+        play[2] = new Player("Player 3", 0);
         
         //------SLIDER TIMER -------------------------------------------
   	aDelay = 10; //milliseconds
@@ -164,9 +174,12 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                         tAccuracy.stop();
                         keyCounter = 0;
                         b2.setVisible(false);
-                        xmlGame.openWriterXML("test");
-                        xmlGame.writeObject(score);
+                        play[pnum].setName("Player"+" "+ (pnum+1));
+                        play[pnum].setpScore(score);
+                        xmlGame.openWriterXML("test.xml");
+                        xmlGame.writeObject(play[pnum]);
                         xmlGame.closeWriterXML();
+                        lb.updateBoard();
                     }
                     SimpleDateFormat df = new SimpleDateFormat("ss:S");
                     countMessage.setText(df.format(duration - clockTime));
@@ -522,7 +535,6 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                     setY = (setY - animatey);
                     ball.setLocation((int)(setX + animatex), (int)(setY + animatey));
                 }
-                System.out.println("setX: " + setX + " setY: " +setY);
             }
             if (obj == tFlip) 
             {
@@ -548,7 +560,6 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                 tPower = new Timer (dDelay, this);
                 tAccuracy.start();
                 tPower.start();
-                System.out.println("aDelay: "+aDelay+" dDelay: "+dDelay);
             }
             if (obj == gameOpt.jb2)
             {

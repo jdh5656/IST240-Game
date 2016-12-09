@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.7.0_80" class="java.beans.XMLDecoder">
+ <object class="Game.Player" id="Player0">
+  <void property="bounds">
+   <object class="java.awt.Rectangle" id="Rectangle0">
+    <void class="java.awt.Rectangle" method="getField">
+     <string>x</string>
+     <void method="set">
+      <object idref="Rectangle0"/>
+      <int>750</int>
+     </void>
+    </void>
+    <void class="java.awt.Rectangle" method="getField">
+     <string>y</string>
+     <void method="set">
+      <object idref="Rectangle0"/>
+      <int>150</int>
+     </void>
+    </void>
+    <void class="java.awt.Rectangle" method="getField">
+     <string>width</string>
+     <void method="set">
+      <object idref="Rectangle0"/>
+      <int>200</int>
+     </void>
+    </void>
+    <void class="java.awt.Rectangle" method="getField">
+     <string>height</string>
+     <void method="set">
+      <object idref="Rectangle0"/>
+      <int>50</int>
+     </void>
+    </void>
+   </object>
+  </void>
+  <void class="Game.Player" method="getField">
+   <string>name</string>
+   <void method="set">
+    <object idref="Player0"/>
+    <string>Player 3</string>
+   </void>
+  </void>
+  <void class="Game.Player" method="getField">
+   <string>pScore</string>
+   <void method="set">
+    <object idref="Player0"/>
+    <int>1</int>
+   </void>
+  </void>
+  <void property="actionCommand">
+   <string>Player 3</string>
+  </void>
+  <void property="label">
+   <string>Player 3</string>
+  </void>
+  <void property="model">
+   <void property="actionCommand">
+    <null/>
+   </void>
+  </void>
+ </object>
+</java>

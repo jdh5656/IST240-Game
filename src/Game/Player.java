@@ -13,27 +13,49 @@ import javax.swing.*;
  */
 public class Player extends JButton
 {
-    String name;
-    int pScore;
+    public String name;
+    public Integer pScore;
     public Player (String n, int s)
+    {
+        name = n;
+        pScore = s;
+    }
+    public Player ()
     {
         
     }
-    public String getName() 
+
+    /**
+     * @return the name
+     */
+    public String getName()
     {
-    return name;
+        return name;
     }
+
+    /**
+     * @param name the name to set
+     */
     public void setName(String name)
     {
-         this.name = name;
+        this.name = name;
     }
-    public int getScore() 
+
+    /**
+     * @return the pScore
+     */
+    public int getpScore()
     {
         return pScore;
     }
-    public void setScore(int pscore)
+
+    /**
+     * @param pScore the pScore to set
+     */
+    public void setpScore(Integer pScore)
     {
-        this.pScore = pscore;
+        this.pScore = pScore;
     }
+
 }
 
