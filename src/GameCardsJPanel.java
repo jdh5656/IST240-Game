@@ -8,7 +8,7 @@
  *
  * @author jacobdhayes jdh5656
  */
-
+import Game.XML_240;
 import Cards.InstructionsCard;
 import Cards.IntroCard;
 import Cards.DesignersCard;
@@ -23,9 +23,8 @@ import javax.swing.*;
 
 public class GameCardsJPanel extends JPanel
 {
-
+    XML_240 x2;
     CardLayout cards;
-    
     IntroCard intro;
     InstructionsCard instructions;
     DesignersCard designers;
@@ -50,9 +49,9 @@ public class GameCardsJPanel extends JPanel
         options = new OptionsCard(controller);
         intro = new IntroCard();
         instructions = new InstructionsCard();
-        game = new GameCard(controller, options);
+        game = new GameCard(controller, options, x2);
         designers = new DesignersCard();
-        leaderboard = new GameLeaderboard();
+        leaderboard = new GameLeaderboard(game, x2);
        
         add(intro, CINTRO);
         add(instructions, CINSTRUCTIONS);

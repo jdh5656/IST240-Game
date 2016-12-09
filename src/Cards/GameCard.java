@@ -1,7 +1,8 @@
 package Cards;
 
+import Game.XML_240;
 import Game.GameController;
-
+import Game.Player;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,8 +13,6 @@ import Cards.OptionsCard;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
-
-
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Graphics;
@@ -30,6 +29,8 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import java.io.*;
+import java.beans.*;
 
 /**
  *
@@ -39,6 +40,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     
     GameController controller;
     OptionsCard gameOpt;
+    XML_240 xmlGame;
     
     JTextArea pMessage = new JTextArea("Power will be displayed here");
     JTextArea aMessage = new JTextArea("Accuracy will be displayed here");
@@ -82,11 +84,9 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     int score = 0;
     long startTime = -1;
     long duration = 10000;
-   
+    Player p1, p2, p3;
 
 
-    
-    
     ImageIcon north = new ImageIcon("images/north.png");
     ImageIcon northEast = new ImageIcon("images/northeast.png");
     ImageIcon northWest = new ImageIcon("images/northwest.png");
@@ -106,12 +106,13 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     ImageIcon accu = new ImageIcon ("images/acc.png");
     ImageIcon pow = new ImageIcon ("images/pow.png");
 
-    public GameCard(GameController ctrl, OptionsCard opt)
+    public GameCard(GameController ctrl, OptionsCard opt, XML_240 xG)
     {
         super();
         
         controller = ctrl;
         gameOpt = opt;
+        xmlGame = xG;
         
         setLayout(null);
         setBackground(Color.gray);
@@ -163,6 +164,9 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                         tAccuracy.stop();
                         keyCounter = 0;
                         b2.setVisible(false);
+                        xmlGame.openWriterXML("test");
+                        xmlGame.writeObject(score);
+                        xmlGame.closeWriterXML();
                     }
                     SimpleDateFormat df = new SimpleDateFormat("ss:S");
                     countMessage.setText(df.format(duration - clockTime));

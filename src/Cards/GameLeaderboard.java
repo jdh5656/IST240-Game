@@ -11,12 +11,21 @@ import javax.swing.*;
  *
  * @author jacobdhayes
  */
+import Game.XML_240;
 import java.awt.*;
 import javax.swing.*;
 
 public class GameLeaderboard extends JPanel {
-    public GameLeaderboard ()
+    XML_240 xmlLeader;
+    GameCard gcard;
+    int highScore = 0;
+    public GameLeaderboard (GameCard g, XML_240 xL)
     {
         super();
+        gcard = g;
+        xmlLeader = xL;
+        //xmlLeader.openReaderXML("test");
+        //highScore = (int)xmlLeader.ReadObject();
+        //System.out.println(highScore);
     }
 }
