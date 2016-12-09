@@ -49,7 +49,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     JLabel showFinalScore = new JLabel(" ");
     JSlider accuracy, power;
     JButton b1, b2, b5, b6,b7,ball,jbGameOver;
-    JLabel l1, l2, l3,countMessage;
+    JLabel l1, l2, l3,countMessage, gAcc, gPow;
     JLabel showScore = new JLabel(" ");
     Timer tAccuracy;
     Timer tPower;
@@ -103,6 +103,8 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
     ImageIcon start = new ImageIcon("images/start.png");
     ImageIcon stop = new ImageIcon("images/stop.png");
     ImageIcon gameover = new ImageIcon("images/gameover.png");
+    ImageIcon accu = new ImageIcon ("images/acc.png");
+    ImageIcon pow = new ImageIcon ("images/pow.png");
 
     public GameCard(GameController ctrl, OptionsCard opt)
     {
@@ -273,12 +275,16 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         l3 = new JLabel (gameFar);
         l2.setVisible(false);
         l3.setVisible(false);
+        gAcc = new JLabel (accu);
+        gPow = new JLabel (pow);
         
 
             
 
         
         //Add Components
+        add(gAcc);
+        add(gPow);
         add(b1);
         add(b2);
         //add(b6);
@@ -304,12 +310,15 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         add(l3);
         
         
+        
     
         
         //------------Placing------------------------------------
         // x,y, length, height)
         accuracy.setBounds(new Rectangle(500,625,300,75));
+        gAcc.setBounds(500, 595, 300, 30);
         power.setBounds(new Rectangle(800,400,75,300));
+        gPow.setBounds(875, 400, 30, 300);
         b1.setBounds(new Rectangle(100,110,120,76));
         b2.setBounds(new Rectangle(100,110,120,76));
         b6.setBounds(300, 50, 750, 400);
