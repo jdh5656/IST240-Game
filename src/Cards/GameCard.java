@@ -119,6 +119,7 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
         gameOpt = opt;
         xmlGame = xG;
         lb = glead;
+        lb.jb2.addActionListener(this);
         
         setLayout(null);
         setBackground(Color.gray);
@@ -619,6 +620,10 @@ public class GameCard extends JPanel implements ActionListener, javax.swing.even
                 l1.setVisible(false);
                 l2.setVisible(false);
                 l3.setVisible(true);
+            }
+            if (obj == lb.jb2)
+            {
+                lb.clearBoard();
             }
             
             repaint();

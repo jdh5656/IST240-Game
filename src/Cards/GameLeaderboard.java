@@ -20,12 +20,14 @@ public class GameLeaderboard extends JPanel {
     XML_240 xmlLeader;
     int highScore = 0;
     Player[] thePlayer;
+    JButton jb2;
     public GameLeaderboard ( XML_240 xL)
     {
         super();
-        GridLayout grid = new GridLayout(4,1);
+        GridLayout grid = new GridLayout(5,1);
         setLayout(grid);
         xmlLeader = xL;
+        jb2 = new JButton ("Reset stats");
         JButton jb1 = new JButton("Leaderboard");
         jb1.setBackground(Color.white);
         thePlayer = new Player[3];
@@ -44,6 +46,7 @@ public class GameLeaderboard extends JPanel {
         add(thePlayer[0]);
         add(thePlayer[1]);
         add(thePlayer[2]);
+        add(jb2);
         
         //-------Message and Look/feel
         thePlayer[0].setText(thePlayer[0].name+"'s"+" high score is: "+thePlayer[0].pScore);
@@ -57,5 +60,22 @@ public class GameLeaderboard extends JPanel {
         thePlayer[1] = (Player)xmlLeader.ReadObject();
         thePlayer[2] = (Player)xmlLeader.ReadObject();
         xmlLeader.closeReaderXML();
+    }
+    public void clearBoard ()
+    {
+        thePlayer[0].name = "Player 1"; thePlayer[0].pScore = 0;
+        thePlayer[1].name = "Player 1"; thePlayer[1].pScore = 0;
+        thePlayer[2].name = "Player 1"; thePlayer[2].pScore = 0;
+        xmlLeader.openWriterXML("test.xml");
+        xmlLeader.writeObject(thePlayer[0]);
+        xmlLeader.writeObject(thePlayer[1]);
+        xmlLeader.writeObject(thePlayer[2]);
+        xmlLeader.closeWriterXML();
+        xmlLeader.openReaderXML("test.xml");
+        thePlayer[0] = (Player)xmlLeader.ReadObject();
+        thePlayer[1] = (Player)xmlLeader.ReadObject();
+        thePlayer[2] = (Player)xmlLeader.ReadObject();
+        xmlLeader.closeReaderXML();
+        repaint();
     }
 }
